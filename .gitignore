@@ -11,7 +11,8 @@ BackEnd/node_modules/
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
+# .DS_Store should be uhm ignore
+#.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
@@ -19,7 +20,6 @@ BackEnd/node_modules/
 *.sw?
 
 #Paswords - remove later remmmemmber!
-#.env
 #BackEnd/config/config.json
-BackEnd/.env/
-.DS_Store
+#BackEnd/.env/
+#.DS_Store
