@@ -17,7 +17,7 @@
 ## Dependencies Installation guide
 
 > [!Important]
- > Remember to install dependencies (node_modules) INSIDE <root>/BackEnd/..
+ > Remember to install dependencies (node_modules) INSIDE <root> /BackEnd/..
 1. Moving into /BackEnd/ subfolder -> ```cd BackEnd/```
 2. Run this ```npm i``` for installing dependencies
 3. Then you could run our BackEnd locally with -> ```npm run dev```
