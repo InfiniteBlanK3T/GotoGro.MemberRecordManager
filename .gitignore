@@ -1,2 +1,23 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+#Package dependcies
 BackEnd/node_modules/
-BackEnd/.env/
+
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+#Paswords - remove later remmmemmber!
+#.env
+#BackEnd/config/config.json

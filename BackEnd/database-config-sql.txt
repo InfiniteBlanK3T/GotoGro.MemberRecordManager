@@ -1,0 +1,66 @@
+CREATE TABLE `Employee` (
+  `EmployeeId` varchar(10),
+  `FirstName` varchar(20),
+  `LastName` varchar(20),
+  `Phone` varchar(10),
+  `Email` varchar(20),
+  `StreetNumber` varchar(5),
+  `StreetName` varchar(20),
+  `Suburb` varchar(20),
+  `PostCode` int,
+  PRIMARY KEY (`EmployeeId`)
+);
+
+CREATE TABLE `Member` (
+  `MemberID` varchar(10),
+  `FirstName` varchar(50),
+  `LastName` varchar(50),
+  `Phone` varchar(10),
+  `Email` varchar(20),
+  `StreetNumber` int,
+  `StreetName` varchar(50),
+  `Suburb` varchar(30),
+  `postcode` int,
+  PRIMARY KEY (`MemberID`)
+);
+
+CREATE TABLE `Sales` (
+  `SaleId` varchar(10),
+  `MemberId` varchar(10),
+  `ReceiptNumber` varchar(10),
+  `SaleDate` DateTime,
+  `PaymentMethod` varchar(20),
+  PRIMARY KEY (`SaleId`),
+  FOREIGN KEY (`MemberId`) REFERENCES `Member`(`FirstName`)
+);
+
+CREATE TABLE `Item ` (
+  `ItemId` varchar(10),
+  `SaleId` varchar(10),
+  `Quantity` int,
+  `Name` varchar(20),
+  `Price` float,
+  PRIMARY KEY (`ItemId`),
+  FOREIGN KEY (`SaleId`) REFERENCES `Sales`(`SaleId`)
+);
+
+CREATE TABLE `Permissions ` (
+  `EmployeeId` varchar(10),
+  `Level` int,
+  `UserName` varchar(20),
+  `Password` varchar(20),
+  PRIMARY KEY (`EmployeeId`)
+);
+
+CREATE TABLE `Feedback` (
+  `FeedbackId` varchar(10),
+  `MemberId` varchar(10),
+  `Comment` varchar(200),
+  PRIMARY KEY (`FeedbackId`)
+);
+
+CREATE TABLE `ID` (
+  `member_id` int,
+  `employee_id` int
+);
+
