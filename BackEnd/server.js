@@ -11,8 +11,8 @@ app.use(express.json());
 
 app.use("/api/employee", require("./routes/employeeRoutes"));
 app.use("/api/member", require("./routes/memberRoutes"));
-// app.use("/api/sales", require("./routes/saleRoutes"));
-// app.use("/api/item", require("./routes/itemRoutes"));
+app.use("/api/sales", require("./routes/saleRoutes"));
+app.use("/api/item", require("./routes/itemRoutes"));
 app.use("/api/permission", require("./routes/permissionRoutes"));
 app.use("/api/feedback", require("./routes/feedbackRoutes"));
 
