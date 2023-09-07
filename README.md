@@ -13,16 +13,6 @@
 
 ## The project requires:
 - [Node JS 18.17.1](https://nodejs.org/en)
-- (Optional) Testing purpose:
-  - API Testing - [PostMan](https://www.postman.com/)
-## Running localhost database:
-> [!Warning]
- > Modify the credentials that fit your PC: - (Sorry haven't merged all into .env, so you have to manually modify)
-  ``` /BackEnd/config/ ```
-- (Require) - [XAMP](https://www.apachefriends.org/download.html)
-  > Just need to enable MySQL
-- Database GUI - any! [PostgreSQL](https://www.postgresql.org/) or [MySQLWorkBench](https://www.mysql.com/products/workbench/) is fine
-- Run this to build database schema ```npx sequelize-cli db:migrate```
 
 ## Dependencies Installation guide
 
@@ -32,6 +22,23 @@
 1. Moving into /BackEnd/ subfolder -> ```cd BackEnd/```
 2. Run this ```npm i``` for installing dependencies
 3. Then you could run our BackEnd locally with -> ```npm run dev```
+
+
+## (Optional) - Running localhost database:
+> [!NOTE]
+> I will push our backend into Cloud services soon so you don't have to do this. Feel free to test on your local machine if you like.
+> [!Warning]
+ > Modify the credentials that fit your PC: - (Sorry haven't merged all into .env, so you have to manually modify)
+  ``` /BackEnd/config/ ```
+- [XAMP](https://www.apachefriends.org/download.html)
+  > Just need to enable MySQL
+- Database GUI - any! [PostgreSQL](https://www.postgresql.org/) or [MySQLWorkBench](https://www.mysql.com/products/workbench/) is fine
+- Run this to build database schema automatically (I already wrote the script) ```npx sequelize-cli db:migrate```
+
+## Testing
+- APIs Testing - [PostMan](https://www.postman.com)
+  > [How to test API using PostMan?](https://youtu.be/CLG0ha_a0q8?si=X-ED1t5GpPRQ-qct)
+- Other tests that I have no idea about 🤷
 
 ## Task lists
 - [ ] Ready up for production environment #1
