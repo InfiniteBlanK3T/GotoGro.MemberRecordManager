@@ -27,6 +27,7 @@
 ## (Optional) - Running localhost database:
 > [!NOTE]
 > I will push our backend into Cloud services soon so you don't have to do this. Feel free to test on your local machine if you like.
+
 > [!Warning]
  > Modify the credentials that fit your PC: - (Sorry haven't merged all into .env, so you have to manually modify)
   ``` /BackEnd/config/ ```
