@@ -68,16 +68,9 @@ class FormValidation
 
 }
 
-// Declaring RegEx Constants
+// Declaring RegEx Constants 
 
-const firstNameRegEx = /^[a-zA-Z]{2,20}/;
-const lastNameRegEx = /\b([A-ZÀ-ÿa-z][-,a-z. ']+[ ]*){1,20}/;
-const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const phoneRegEx = /^[0-9]{10}$|^\(0[1-9]{1}\)[0-9]{8}$|^[0-9]{8}$|^[0-9]{4}[ ][0-9]{3}[ ][0-9]{3}$|^\(0[1-9]{1}\)[ ][0-9]{4}[ ][0-9]{4}$|^[0-9]{4}[ ][0-9]{4}$/;
-const streetNoRegEx = /[A-Za-z0-9'\.\-\s\,]{2,40}/; //need to update
-const streetNameRegEx = /[A-Za-z0-9'\.\-\s\,]{2,40}/; //need to update
-const suburbRegEx = /[A-Za-z0-9'\.\-\s\,]{2,40}/; //need to update
-const postcodeRegEx = /[0-9]{4}/;
+/// ***** NOW IN RegEx.js file ******
 
 // declaring html element constants
 // inputs
@@ -116,6 +109,12 @@ const fv_streetName = new FormValidation(streetNameRegEx);
 const fv_suburb = new FormValidation(suburbRegEx);
 const fv_postcode = new FormValidation(postcodeRegEx);
 
+// declaring variables 
+
+let AreInputsAllValid = true;
+
+// declaring data object
+
 
 // function to set the user input to the newMember object
 
@@ -136,11 +135,13 @@ const setMemberData = () =>
 const formValidationFunc = () => 
 {
     // setting fv_instances
+    let areInputsAllValid = true;
 
     fv_firstName.setInput(newMember.getFirstName());
     if (!fv_firstName.isInputValid()) 
     {
         firstNameSpan.innerHTML = "First name may only contain letters!"
+        areInputsAllValid = false;
     }
     else
     {
@@ -151,6 +152,7 @@ const formValidationFunc = () =>
     if (!fv_lastName.isInputValid()) 
     {
         lastNameSpan.innerHTML = "Last name may only contain letters!"
+        areInputsAllValid = false;
     }
     else
     {
@@ -161,6 +163,7 @@ const formValidationFunc = () =>
     if (!fv_email.isInputValid())
     {
         emailSpan.innerHTML = "Email address must be valid!"
+        areInputsAllValid = false;
     }
     else
     {
@@ -171,6 +174,7 @@ const formValidationFunc = () =>
     if (!fv_phone.isInputValid())
     {
         phoneSpan.innerHTML = "Phone number must be valid!"
+        areInputsAllValid = false;
     }
     else
     {
@@ -181,6 +185,7 @@ const formValidationFunc = () =>
     if (!fv_streetNo.isInputValid())
     {
         streetNoSpan.innerHTML = "Street no must only contain numbers and letters!"
+        areInputsAllValid = false;
     }
     else
     {
@@ -191,6 +196,7 @@ const formValidationFunc = () =>
     if (!fv_streetName.isInputValid())
     {
         streetNameSpan.innerHTML = "Street name must only contain letters!"
+        areInputsAllValid = false;
     }
     else
     {
@@ -201,6 +207,7 @@ const formValidationFunc = () =>
     if (!fv_suburb.isInputValid())
     {
         suburbSpan.innerHTML = "Suburb must only contain letters!"
+        areInputsAllValid = false;
     }
     else
     {
@@ -211,11 +218,14 @@ const formValidationFunc = () =>
     if (!fv_postcode.isInputValid())
     {
         postcodeSpan.innerHTML = "Postcode must contain 4 numbers!"
+        areInputsAllValid = false;
     }
     else
     {
         postcodeSpan.innerHTML = ""
     }
+
+    return areInputsAllValid;
 
 }
 
@@ -223,7 +233,25 @@ const onSubmitButtonClickHandler = () => {
     console.log("Submit Button Clicked");
     
     setMemberData();
-    formValidationFunc();
+    AreInputsAllValid = formValidationFunc();
+
+    console.log("Are All Inputs Valid: ", AreInputsAllValid);
+
+    if (AreInputsAllValid) 
+    {
+        const memberDataObject = {
+            firstName: newMember.getFirstName(),
+            lastName: newMember.getLastName(),
+            email: newMember.getEmail(),
+            phone: newMember.getPhone(),
+            streetNo: newMember.getStreetNo(),
+            streetName: newMember.getStreetName(),
+            suburb: newMember.getSuburb(),
+            postcode: newMember.getPostcode()
+
+        };
+        console.log(memberDataObject);
+    }
     
     newMember.consoleMemberDetails();
 

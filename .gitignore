@@ -21,3 +21,5 @@ BackEnd/node_modules/
 #Paswords - remove later remmmemmber!
 #.env
 #BackEnd/config/config.json
+BackEnd/.env/
+.DS_Store
