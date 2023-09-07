@@ -34,7 +34,8 @@
 - [XAMP](https://www.apachefriends.org/download.html)
   > Just need to enable MySQL
 - Database GUI - any! [PostgreSQL](https://www.postgresql.org/) or [MySQLWorkBench](https://www.mysql.com/products/workbench/) is fine
-- Run this to build database schema automatically (I already wrote the script) ```npx sequelize-cli db:migrate```
+- Run this -> ```npx sequelize-cli db:migrate``` to build database schema automatically
+  > I already wrote the scripts, check ```/BackEnd/migrations```
 
 ## Testing
 - APIs Testing - [PostMan](https://www.postman.com)
