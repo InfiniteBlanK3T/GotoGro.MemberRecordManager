@@ -1,7 +1,7 @@
 # SWE20001 Semester 2 2023 - Managing Software Project
 # GotoGro-MRM
 
-> [!NOTES]
+> [!NOTE]
 > Please follow the installation guides for BackEnd
 
 
