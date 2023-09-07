@@ -21,8 +21,8 @@
   ``` /BackEnd/config/ ```
 - (Require) - [XAMP](https://www.apachefriends.org/download.html)
   > Just need to enable MySQL
+- Database GUI - any! [PostgreSQL](https://www.postgresql.org/) or [MySQLWorkBench](https://www.mysql.com/products/workbench/) is fine
 - Run this to build database schema ```npx sequelize-cli db:migrate```
-- Database GUI - any! PostgreSQL or MySQLWorkBench is fine
 
 ## Dependencies Installation guide
 
