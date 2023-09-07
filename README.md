@@ -1,7 +1,7 @@
 # SWE20001 Semester 2 2023 - Managing Software Project
 # GotoGro-MRM
 
-> [!IMPORTANT]
+> [!NOTES]
 > Please follow the installation guides for BackEnd
 
 
@@ -26,9 +26,10 @@
 
 ## Dependencies Installation guide
 
-> [!Warning]
- > Remember to install dependencies INSIDE /BackEnd/! ```npm install``
-1. Moving into /BackEnd/ folder -> <root> -> ```cd BackEnd/```
+> [!Important]
+ > Remember to install dependencies (node_modules) INSIDE /BackEnd/
+## Guide
+1. Moving into /BackEnd/ subfolder -> ```cd BackEnd/```
 2. Run this ```npm i``` for installing dependencies
 3. Then you could run our BackEnd locally with -> ```npm run dev```
 
