@@ -20,6 +20,4 @@ BackEnd/node_modules/
 *.sw?
 
 #Paswords - remove later remmmemmber!
-#BackEnd/config/config.json
 #BackEnd/.env/
-#.DS_Store
