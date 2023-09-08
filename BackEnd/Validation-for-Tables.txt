@@ -1,0 +1,54 @@
+Notes:
+Required: cannoot be empty
+Unique: Other records cannot be similar like it
+
+----	Member	----
+MemberId: String (max 10 chars). Primary key. Required.
+FirstName: String (max 50 chars). Required.
+LastName: String (max 50 chars). Required.
+Phone: String (10 chars). Numeric. Required.
+Email: String (5-20 chars). Unique. Must be a valid email format.
+StreetNumber: String (max 5 chars). Required.
+StreetName: String (max 20 chars). Required.
+Suburb: String (max 20 chars). Required.
+PostCode: String (max 10 chars). Required.
+
+
+----	Employee	----
+EmployeeId: String (max 10 chars). Primary key.
+FirstName: String (max 50 chars). Required.
+LastName: String (max 50 chars). Required.
+Phone: String (10 chars). Numeric. Required.
+Email: String (5-20 chars). Unique. Valid email format.
+StreetNumber: String (max 5 chars). Required.
+StreetName: String (max 20 chars). Required.
+Suburb: String (max 20 chars). Required.
+PostCode: String (max 10 chars). Required.
+No automatic timestamps.
+
+----    FeedBack	----
+FeedbackId: Integer. Auto-incremented. Primary key.
+MemberId: String (max 10 chars). References "MemberId" in the "Members" table.
+Comment: String (5-200 chars). Required.
+No automatic timestamps.
+
+----	Item	----
+ItemId: String (max 10 chars). Primary key. Required.
+SaleId: String (max 10 chars). References "SaleId" in the "Sales" table. Required.
+Quantity: Integer. Required. Must be an integer and at least 1.
+Name: String (1-20 chars). Required.
+Price: Float. Required. Must be a valid number and positive.
+
+----	Permission  ----
+EmployeeId: String (max 10 chars). Primary key. References "EmployeeId" in the "Employees" table. Required.
+Level: Integer. Required. Must be a valid integer between 1 and 5.
+UserName: String (5-20 chars). Required. Unique.
+Password: String (8-20 chars). Required.
+
+----    Sales   ----
+SaleId: String (max 10 chars). Primary key. Required.
+MemberId: String (max 10 chars). References "MemberId" in the "Members" table. Required.
+ReceiptNumber: String (max 10 chars). Unique. Required.
+SaleDate: Date. Required. Must be a valid date format.
+PaymentMethod: String (max 20 chars). Required. Valid values: 'Cash', 'Credit Card', 'Debit Card', 'Online Transfer'.
+
