@@ -255,8 +255,5 @@ const onSubmitButtonClickHandler = () => {
     
     newMember.consoleMemberDetails();
 
-
-    
-   
 }
 submitButton.onclick = onSubmitButtonClickHandler;
