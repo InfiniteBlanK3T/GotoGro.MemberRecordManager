@@ -22,10 +22,10 @@
 2. Run this `npm i` for installing dependencies
 3. Then you could run our BackEnd locally with -> `npm run dev`
 
-## (Optional) - Running localhost database:
+## (Testing) - Running localhost database:
 
 > [!NOTE]
-> I will push our backend into Cloud services soon so you don't have to do this. Feel free to test on your local machine if you like.
+> BackEnd will be migrated into Cloud service production environment soon. In the mean time please test from your local machine
 
 > [!Warning]
 > Modify the credentials that fit your PC: `/BackEnd/.env`
@@ -34,7 +34,7 @@
   > Just need to enable MySQL
 - Database GUI - any! [PostgreSQL](https://www.postgresql.org/) or [MySQLWorkBench](https://www.mysql.com/products/workbench/) is fine
 - Run this -> `npx sequelize-cli db:migrate` to build database schema automatically
-  > I already wrote the scripts, check `/BackEnd/migrations`
+  > I already wrote the scripts for database migration, check `/BackEnd/migrations`
 
 ## Testing
 
