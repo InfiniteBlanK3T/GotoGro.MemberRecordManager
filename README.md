@@ -29,8 +29,8 @@
 - Database GUI - [MySQLWorkBench](https://www.mysql.com/products/workbench/)
   -  Create a new connection, leave everything at default
   -  Once you get in run this SQL code ```CREATE NEW SCHEMA swe200001```
-- Run command this inside backend folder-> `npx sequelize-cli db:migrate` to build database schema automatically
-  > Once this command ran, check for tables inside your schema.
+- Run command this inside ```/BackEnd/``` folder-> `npx sequelize-cli db:migrate` to build database schema automatically
+  > Once this command runs, check for tables inside your schema.
 
 ## Testing
 
