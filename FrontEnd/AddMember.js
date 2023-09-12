@@ -1,74 +1,109 @@
+class GetMemberFormData {
+	constructor() {}
 
-class GetMemberFormData
-{   
-    constructor(){}
+	consoleMemberDetails() {
+		console.log(
+			this.firstName,
+			this.lastName,
+			this.email,
+			this.phone,
+			this.streetNo,
+			this.streetName,
+			this.suburb,
+			this.postcode
+		);
+	}
 
-    consoleMemberDetails()
-    {
-        console.log(this.firstName,this.lastName,this.email,this.phone, this.streetNo,this.streetName,this.suburb,this.postcode);
-    }
+	//setters
 
-    //setters
+	setFirstName(aFirstName) {
+		this.firstName = aFirstName;
+	}
+	setLastName(aLastName) {
+		this.lastName = aLastName;
+	}
+	setEmail(aEmail) {
+		this.email = aEmail;
+	}
+	setPhone(aPhone) {
+		this.phone = aPhone;
+	}
+	setStreetNo(aStreetNo) {
+		this.streetNo = aStreetNo;
+	}
+	setStreetName(aStreetName) {
+		this.streetName = aStreetName;
+	}
+	setSuburb(aSuburb) {
+		this.suburb = aSuburb;
+	}
+	setPostcode(aPostcode) {
+		this.postcode = aPostcode;
+	}
 
-    setFirstName(aFirstName) { this.firstName = aFirstName}
-    setLastName(aLastName) { this.lastName = aLastName}
-    setEmail(aEmail) { this.email = aEmail}
-    setPhone(aPhone) { this.phone = aPhone }
-    setStreetNo(aStreetNo) { this.streetNo = aStreetNo}
-    setStreetName(aStreetName) { this.streetName = aStreetName }
-    setSuburb(aSuburb) { this.suburb = aSuburb }
-    setPostcode(aPostcode) { this.postcode = aPostcode}
+	//getters
 
-    //getters
-
-    getFirstName() { return this.firstName; }
-    getLastName() { return this.lastName; }
-    getEmail() { return this.email; }
-    getPhone() { return this.phone; }
-    getStreetNo() { return this.streetNo; }
-    getStreetName() { return this.streetName; }
-    getSuburb() { return this.suburb; }
-    getPostcode() { return this.postcode; }
-    
+	getFirstName() {
+		return this.firstName;
+	}
+	getLastName() {
+		return this.lastName;
+	}
+	getEmail() {
+		return this.email;
+	}
+	getPhone() {
+		return this.phone;
+	}
+	getStreetNo() {
+		return this.streetNo;
+	}
+	getStreetName() {
+		return this.streetName;
+	}
+	getSuburb() {
+		return this.suburb;
+	}
+	getPostcode() {
+		return this.postcode;
+	}
 }
 
-class FormValidation
-{
-    constructor(aRegEx) 
-    {
-        this.regEx = aRegEx;
-    }
+class FormValidation {
+	constructor(aRegEx) {
+		this.regEx = aRegEx;
+	}
 
-    //setters
+	//setters
 
-    setInput(aInput) { this.input = aInput; }
-    setRegEx(aRegEx) { this.regEx = aRegEx; }
+	setInput(aInput) {
+		this.input = aInput;
+	}
+	setRegEx(aRegEx) {
+		this.regEx = aRegEx;
+	}
 
-    //getters
+	//getters
 
-    getInput() { return this.input; }
-    getRegEx() { return this.regEx; }
+	getInput() {
+		return this.input;
+	}
+	getRegEx() {
+		return this.regEx;
+	}
 
-    isInputValid()
-    {
-        if (this.input == "")
-        {
-            return false;
-        }
-        else if (!this.input.match(this.regEx)) 
-        {
-            return false;
-        } 
-        else 
-        {
-            return true;
-        }
-    }
-
-
+	isInputValid() {
+		if (this.input == "") {
+			return false;
+		} else if (!this.input.match(this.regEx)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
 
-// Declaring RegEx Constants 
+// Declaring RegEx Constants
 
 /// ***** NOW IN RegEx.js file ******
 
@@ -109,151 +144,150 @@ const fv_streetName = new FormValidation(streetNameRegEx);
 const fv_suburb = new FormValidation(suburbRegEx);
 const fv_postcode = new FormValidation(postcodeRegEx);
 
-// declaring variables 
+// declaring variables
 
 let AreInputsAllValid = true;
 
 // declaring data object
 
-
 // function to set the user input to the newMember object
 
-const setMemberData = () =>
-{
-    newMember.setFirstName(firstNameInput.value);
-    newMember.setLastName(lastNameInput.value);
-    newMember.setEmail(emailInput.value);
-    newMember.setPhone(phoneInput.value);
-    newMember.setStreetNo(streetNoInput.value);
-    newMember.setStreetName(streetNameInput.value);
-    newMember.setSuburb(suburbInput.value);
-    newMember.setPostcode(postcodeInput.value);
-}
+const setMemberData = () => {
+	newMember.setFirstName(firstNameInput.value);
+	newMember.setLastName(lastNameInput.value);
+	newMember.setEmail(emailInput.value);
+	newMember.setPhone(phoneInput.value);
+	newMember.setStreetNo(streetNoInput.value);
+	newMember.setStreetName(streetNameInput.value);
+	newMember.setSuburb(suburbInput.value);
+	newMember.setPostcode(postcodeInput.value);
+};
 
 // function to perform form validation
 
-const formValidationFunc = () => 
-{
-    // setting fv_instances
-    let areInputsAllValid = true;
+const formValidationFunc = () => {
+	// setting fv_instances
+	let areInputsAllValid = true;
 
-    fv_firstName.setInput(newMember.getFirstName());
-    if (!fv_firstName.isInputValid()) 
-    {
-        firstNameSpan.innerHTML = "First name may only contain letters!"
-        areInputsAllValid = false;
-    }
-    else
-    {
-        firstNameSpan.innerHTML = "";
-    }
+	fv_firstName.setInput(newMember.getFirstName());
+	if (!fv_firstName.isInputValid()) {
+		firstNameSpan.innerHTML = "First name may only contain letters!";
+		areInputsAllValid = false;
+	} else {
+		firstNameSpan.innerHTML = "";
+	}
 
-    fv_lastName.setInput(newMember.getLastName());
-    if (!fv_lastName.isInputValid()) 
-    {
-        lastNameSpan.innerHTML = "Last name may only contain letters!"
-        areInputsAllValid = false;
-    }
-    else
-    {
-        lastNameSpan.innerHTML = "";
-    }
+	fv_lastName.setInput(newMember.getLastName());
+	if (!fv_lastName.isInputValid()) {
+		lastNameSpan.innerHTML = "Last name may only contain letters!";
+		areInputsAllValid = false;
+	} else {
+		lastNameSpan.innerHTML = "";
+	}
 
-    fv_email.setInput(newMember.getEmail());
-    if (!fv_email.isInputValid())
-    {
-        emailSpan.innerHTML = "Email address must be valid!"
-        areInputsAllValid = false;
-    }
-    else
-    {
-        emailSpan.innerHTML = ""
-    }
+	fv_email.setInput(newMember.getEmail());
+	if (!fv_email.isInputValid()) {
+		emailSpan.innerHTML = "Email address must be valid!";
+		areInputsAllValid = false;
+	} else {
+		emailSpan.innerHTML = "";
+	}
 
-    fv_phone.setInput(newMember.getPhone());
-    if (!fv_phone.isInputValid())
-    {
-        phoneSpan.innerHTML = "Phone number must be valid!"
-        areInputsAllValid = false;
-    }
-    else
-    {
-        phoneSpan.innerHTML = ""
-    }
+	fv_phone.setInput(newMember.getPhone());
+	if (!fv_phone.isInputValid()) {
+		phoneSpan.innerHTML = "Phone number must be valid!";
+		areInputsAllValid = false;
+	} else {
+		phoneSpan.innerHTML = "";
+	}
 
-    fv_streetNo.setInput(newMember.getStreetNo());
-    if (!fv_streetNo.isInputValid())
-    {
-        streetNoSpan.innerHTML = "Street no must only contain numbers and letters!"
-        areInputsAllValid = false;
-    }
-    else
-    {
-        streetNoSpan.innerHTML = ""
-    }
+	fv_streetNo.setInput(newMember.getStreetNo());
+	if (!fv_streetNo.isInputValid()) {
+		streetNoSpan.innerHTML = "Street no must only contain numbers and letters!";
+		areInputsAllValid = false;
+	} else {
+		streetNoSpan.innerHTML = "";
+	}
 
-    fv_streetName.setInput(newMember.getStreetName());
-    if (!fv_streetName.isInputValid())
-    {
-        streetNameSpan.innerHTML = "Street name must only contain letters!"
-        areInputsAllValid = false;
-    }
-    else
-    {
-        streetNameSpan.innerHTML = ""
-    }
+	fv_streetName.setInput(newMember.getStreetName());
+	if (!fv_streetName.isInputValid()) {
+		streetNameSpan.innerHTML = "Street name must only contain letters!";
+		areInputsAllValid = false;
+	} else {
+		streetNameSpan.innerHTML = "";
+	}
 
-    fv_suburb.setInput(newMember.getSuburb());
-    if (!fv_suburb.isInputValid())
-    {
-        suburbSpan.innerHTML = "Suburb must only contain letters!"
-        areInputsAllValid = false;
-    }
-    else
-    {
-        suburbSpan.innerHTML = ""
-    }
+	fv_suburb.setInput(newMember.getSuburb());
+	if (!fv_suburb.isInputValid()) {
+		suburbSpan.innerHTML = "Suburb must only contain letters!";
+		areInputsAllValid = false;
+	} else {
+		suburbSpan.innerHTML = "";
+	}
 
-    fv_postcode.setInput(newMember.getPostcode());
-    if (!fv_postcode.isInputValid())
-    {
-        postcodeSpan.innerHTML = "Postcode must contain 4 numbers!"
-        areInputsAllValid = false;
-    }
-    else
-    {
-        postcodeSpan.innerHTML = ""
-    }
+	fv_postcode.setInput(newMember.getPostcode());
+	if (!fv_postcode.isInputValid()) {
+		postcodeSpan.innerHTML = "Postcode must contain 4 numbers!";
+		areInputsAllValid = false;
+	} else {
+		postcodeSpan.innerHTML = "";
+	}
 
-    return areInputsAllValid;
+	return areInputsAllValid;
+};
 
+// BackEnd - Loading Indicator
+const loadingIndicator = document.getElementById("loadingIndicator");
+
+function showLoading() {
+	loadingIndicator.style.display = "block";
+}
+
+function hideLoading() {
+	loadingIndicator.style.display = "none";
 }
 
 const onSubmitButtonClickHandler = () => {
-    console.log("Submit Button Clicked");
-    
-    setMemberData();
-    AreInputsAllValid = formValidationFunc();
+	console.log("Submit Button Clicked");
 
-    console.log("Are All Inputs Valid: ", AreInputsAllValid);
+	setMemberData();
+	AreInputsAllValid = formValidationFunc();
 
-    if (AreInputsAllValid) 
-    {
-        const memberDataObject = {
-            firstName: newMember.getFirstName(),
-            lastName: newMember.getLastName(),
-            email: newMember.getEmail(),
-            phone: newMember.getPhone(),
-            streetNo: newMember.getStreetNo(),
-            streetName: newMember.getStreetName(),
-            suburb: newMember.getSuburb(),
-            postcode: newMember.getPostcode()
+	console.log("Are All Inputs Valid: ", AreInputsAllValid);
 
-        };
-        console.log(memberDataObject);
-    }
-    
-    newMember.consoleMemberDetails();
+	if (AreInputsAllValid) {
+		const memberDataObject = {
+			firstName: newMember.getFirstName(),
+			lastName: newMember.getLastName(),
+			email: newMember.getEmail(),
+			phone: newMember.getPhone(),
+			streetNo: newMember.getStreetNo(),
+			streetName: newMember.getStreetName(),
+			suburb: newMember.getSuburb(),
+			postcode: newMember.getPostcode(),
+		};
+		console.log(memberDataObject);
 
-}
+		//BackEnd - fetch from API
+		showLoading();
+		fetch("BACKEND_ENDPOINT_URL", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(memberDataObject),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				hideLoading();
+				console.log("Success:", data);
+			})
+			.catch((error) => {
+				hideLoading();
+				console.error("Error:", error);
+			});
+	}
+
+	newMember.consoleMemberDetails();
+};
 submitButton.onclick = onSubmitButtonClickHandler;
