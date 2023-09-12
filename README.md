@@ -3,23 +3,25 @@
 # GotoGro-MRM
 
 > [!NOTE]
-> Please follow the installation guides for BackEnd
+> Please follow the instructions below
+
+# The project requires:
+
+- [Node JS 18.17.1](https://nodejs.org/en)
+- ## Dependencies Installation guide
+
+> [!Important]
+> Remember to install dependencies (node_modules) INSIDE <root> /BackEnd/.. OR /FrontEnd/..
+
+1. Moving into /BackEnd/ OR /FrontEnd/ subfolder -> `cd BackEnd/`
+2. Run this `npm i` for installing dependencies
 
 # Front End
+Run ```http-server``` to run the Web Development server for Front End
 
 # Back End
 
-## The project requires:
 
-- [Node JS 18.17.1](https://nodejs.org/en)
-
-## Dependencies Installation guide
-
-> [!Important]
-> Remember to install dependencies (node_modules) INSIDE <root> /BackEnd/..
-
-1. Moving into /BackEnd/ subfolder -> `cd BackEnd/`
-2. Run this `npm i` for installing dependencies
 3. Then you could run our BackEnd locally with -> `npm run dev`
 
 ## (Testing) - Running localhost database:
