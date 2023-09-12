@@ -12,7 +12,7 @@
 
 # Front End
 > [!Important]
-> Remember to has to be in <root> to run ```http-server``` 
+> Remember to has to be in /root/ to run ```http-server``` 
  - Run ```http-server``` to run the Web Development server for Front End
  - Since there isn't any configuration for Home Page once connected navigate to the FrontEnd folder and choose which HTML you want to test.
 
