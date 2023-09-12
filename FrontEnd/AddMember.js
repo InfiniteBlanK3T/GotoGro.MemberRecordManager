@@ -200,52 +200,41 @@ const formValidationFunc = () => {
 	} else {
 		phoneSpan.innerHTML = "";
 	}
+	// COmment out testing Geo Validation
+	// fv_streetNo.setInput(newMember.getStreetNo());
+	// if (!fv_streetNo.isInputValid()) {
+	// 	streetNoSpan.innerHTML = "Street no must only contain numbers and letters!";
+	// 	areInputsAllValid = false;s
+	// } else {
+	// 	streetNoSpan.innerHTML = "";
+	// }
 
-	fv_streetNo.setInput(newMember.getStreetNo());
-	if (!fv_streetNo.isInputValid()) {
-		streetNoSpan.innerHTML = "Street no must only contain numbers and letters!";
-		areInputsAllValid = false;
-	} else {
-		streetNoSpan.innerHTML = "";
-	}
+	// fv_streetName.setInput(newMember.getStreetName());
+	// if (!fv_streetName.isInputValid()) {
+	// 	streetNameSpan.innerHTML = "Street name must only contain letters!";
+	// 	areInputsAllValid = false;
+	// } else {
+	// 	streetNameSpan.innerHTML = "";
+	// }
 
-	fv_streetName.setInput(newMember.getStreetName());
-	if (!fv_streetName.isInputValid()) {
-		streetNameSpan.innerHTML = "Street name must only contain letters!";
-		areInputsAllValid = false;
-	} else {
-		streetNameSpan.innerHTML = "";
-	}
+	// fv_suburb.setInput(newMember.getSuburb());
+	// if (!fv_suburb.isInputValid()) {
+	// 	suburbSpan.innerHTML = "Suburb must only contain letters!";
+	// 	areInputsAllValid = false;
+	// } else {
+	// 	suburbSpan.innerHTML = "";
+	// }
 
-	fv_suburb.setInput(newMember.getSuburb());
-	if (!fv_suburb.isInputValid()) {
-		suburbSpan.innerHTML = "Suburb must only contain letters!";
-		areInputsAllValid = false;
-	} else {
-		suburbSpan.innerHTML = "";
-	}
-
-	fv_postcode.setInput(newMember.getPostcode());
-	if (!fv_postcode.isInputValid()) {
-		postcodeSpan.innerHTML = "Postcode must contain 4 numbers!";
-		areInputsAllValid = false;
-	} else {
-		postcodeSpan.innerHTML = "";
-	}
+	// fv_postcode.setInput(newMember.getPostcode());
+	// if (!fv_postcode.isInputValid()) {
+	// 	postcodeSpan.innerHTML = "Postcode must contain 4 numbers!";
+	// 	areInputsAllValid = false;
+	// } else {
+	// 	postcodeSpan.innerHTML = "";
+	// }
 
 	return areInputsAllValid;
 };
-
-// BackEnd - Loading Indicator
-const loadingIndicator = document.getElementById("loadingIndicator");
-
-function showLoading() {
-	loadingIndicator.style.display = "block";
-}
-
-function hideLoading() {
-	loadingIndicator.style.display = "none";
-}
 
 const onSubmitButtonClickHandler = () => {
 	console.log("Submit Button Clicked");
@@ -257,20 +246,17 @@ const onSubmitButtonClickHandler = () => {
 
 	if (AreInputsAllValid) {
 		const memberDataObject = {
-			firstName: newMember.getFirstName(),
-			lastName: newMember.getLastName(),
-			email: newMember.getEmail(),
-			phone: newMember.getPhone(),
-			streetNo: newMember.getStreetNo(),
-			streetName: newMember.getStreetName(),
-			suburb: newMember.getSuburb(),
-			postcode: newMember.getPostcode(),
+			FirstName: newMember.getFirstName(),
+			LastName: newMember.getLastName(),
+			Email: newMember.getEmail(),
+			Phone: newMember.getPhone(),
+			StreetNumber: newMember.getStreetNo(),
+			StreetName: newMember.getStreetName(),
+			Suburb: newMember.getSuburb(),
+			PostCode: newMember.getPostcode(),
 		};
-		console.log(memberDataObject);
-
 		//BackEnd - fetch from API
-		showLoading();
-		fetch("BACKEND_ENDPOINT_URL", {
+		fetch("http://localhost:5732/api/member", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -279,11 +265,9 @@ const onSubmitButtonClickHandler = () => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				hideLoading();
 				console.log("Success:", data);
 			})
 			.catch((error) => {
-				hideLoading();
 				console.error("Error:", error);
 			});
 	}

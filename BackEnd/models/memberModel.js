@@ -44,7 +44,7 @@ const Member = sequelize.define(
 			unique: true,
 			validate: {
 				isEmail: true,
-				len: [5, 20],
+				len: [10, 100],
 				notEmpty: {
 					msg: "Provide valid email",
 				},
