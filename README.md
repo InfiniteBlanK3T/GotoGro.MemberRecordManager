@@ -8,14 +8,14 @@
 # The project requires:
 
 - [Node JS 18.17.1](https://nodejs.org/en)
-- ## Dependencies Installation guide
+
 
 # Front End
  - Run ```http-server``` to run the Web Development server for Front End
  - Since there isn't any configuration for Home Page once connected navigate to FrontEnd folder and choose which HTML you want to test.
 
 # Back End
-
+## Dependencies Installation guide
 > [!Important]
 > Remember to install dependencies (node_modules) INSIDE <root> /BackEnd/.. 
 1. Moving into /BackEnd/ OR subfolder -> `cd BackEnd/`
