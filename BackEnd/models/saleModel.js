@@ -8,7 +8,6 @@ const Sales = sequelize.define(
 			type: DataTypes.STRING(10),
 			allowNull: false,
 			primaryKey: true,
-			autoIncrement: true,
 			validate: {
 				notEmpty: {
 					msg: "SaleId is required",
@@ -48,6 +47,8 @@ const Sales = sequelize.define(
 				isDate: {
 					msg: "SaleDate should be a valid date",
 				},
+				isBefore: "2100-01-01",
+				isAfter: "2010-01-01",
 			},
 		},
 		PaymentMethod: {

@@ -4,8 +4,13 @@ const Sequelize = require("sequelize");
 const crypto = require("crypto");
 
 function generateMemberId() {
-	return crypto.randomBytes(5).toString("hex"); // returns a random string of 10 characters
+	return crypto.randomBytes(5).toString("hex");
 }
+
+const googleMapsClient = require("@google/maps").createClient({
+	key: "AIzaSyCdKqNl_GWb1DtYGOAr-or0Qcmix647tqk",
+	Promise: Promise,
+});
 
 //---------------API---------------
 //@access public
@@ -43,18 +48,56 @@ const updateMember = asyncHandler(async (req, res) => {
 //@access public
 //@ route POST /api/member/
 const createMember = asyncHandler(async (req, res) => {
-	const {
-		FirstName,
-		LastName,
-		Phone,
-		Email,
-		StreetNumber,
-		StreetName,
-		Suburb,
-		PostCode,
-	} = req.body;
+	const unwantedFields = [
+		"MemberId",
+		"StreetNumber",
+		"StreetName",
+		"Suburb",
+		"PostCode",
+	];
+	for (const field of unwantedFields) {
+		if (req.body[field]) {
+			return res
+				.status(400)
+				.json({
+					error: `Field ${field} should not be provided. Stop iNjEcTing bRo`,
+				});
+		}
+	}
 
-	// Generate a unique MemberId
+	const { FirstName, LastName, Phone, Email, FullAddress } = req.body;
+
+	// Validate the address using Google Maps Geocoding API
+	const response = await googleMapsClient
+		.geocode({ address: FullAddress })
+		.asPromise();
+
+	// Assuming the first result is the most accurate
+	const addressComponents = response.json.results[0].address_components;
+
+	const streetNumberComponent = addressComponents.find((comp) =>
+		comp.types.includes("street_number")
+	);
+	const StreetNumber = streetNumberComponent
+		? streetNumberComponent.long_name
+		: null;
+
+	const streetNameComponent = addressComponents.find((comp) =>
+		comp.types.includes("route")
+	);
+	const StreetName = streetNameComponent ? streetNameComponent.long_name : null;
+
+	const suburbComponent = addressComponents.find((comp) =>
+		comp.types.includes("locality")
+	);
+	const Suburb = suburbComponent ? suburbComponent.long_name : null;
+
+	const postCodeComponent = addressComponents.find((comp) =>
+		comp.types.includes("postal_code")
+	);
+	const PostCode = postCodeComponent ? postCodeComponent.long_name : null;
+
+	//Generating MemberID
 	let MemberId = generateMemberId();
 	let existingMember = await Member.findOne({ where: { MemberId } });
 

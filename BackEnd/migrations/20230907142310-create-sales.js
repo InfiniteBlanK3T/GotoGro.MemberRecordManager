@@ -7,7 +7,6 @@ module.exports = {
 				type: Sequelize.STRING(10),
 				allowNull: false,
 				primaryKey: true,
-				autoIncrement: true,
 				validate: {
 					len: [10, 10],
 				},
@@ -37,7 +36,7 @@ module.exports = {
 				validate: {
 					isDate: true,
 					isBefore: "2100-01-01",
-					isAfter: "1900-01-01",
+					isAfter: "2010-01-01",
 				},
 			},
 			PaymentMethod: {

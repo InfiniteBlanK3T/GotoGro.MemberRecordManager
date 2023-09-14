@@ -1,84 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Document</title>
-    
+
     <link rel="stylesheet" href="./styles/AddMember.css">
     <script src="RegEx.js" defer></script>
     <script src="AddMember.js" defer></script>
+    <!-- Geo Validation Google API -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHOHmzHqrRVeKdYs9zCknv_ukYMmbXl_0&libraries=places"></script>
 
 </head>
+
 <body>
-    
+
     <div class="box">
         <form action="">
             <h3 class="formHeading">Add New Member</h3>
-
 
             <div class="div_input">
                 <input type="text" id="aFirstName" class="textInput" required="">
                 <label for="aFirstName">First Name:</label>
                 <span class="div_span" id="firstNameSpan"></span>
             </div>
-            
+
             <div class="div_input">
                 <input type="text" id="aLastName" class="textInput" required="">
                 <label for="aLastName">Last Name:</label>
                 <span class="div_span" id="lastNameSpan"></span>
             </div>
-            
+
             <div class="div_input">
                 <input type="text" id="aEmail" class="textInput" required="">
                 <label for="aEmail">Email:</label>
                 <span class="div_span" id="emailSpan"></span>
             </div>
-            
+
             <div class="div_input">
                 <input type="text" id="aPhone" class="textInput" required="">
                 <label for="aPhone">Phone:</label>
                 <span class="div_span" id="phoneSpan"></span>
             </div>
-            
+
             <div class="div_input">
-                <input type="text" id="aStreetNo" class="textInput" required="">
-                <label for="aStreetNo">Street No:</label>
-                <span class="div_span" id="streetNoSpan"></span>
-            </div>
-            
-            <div class="div_input">
-                <input type="text" id="aStreetName" class="textInput" required="">
-                <label for="aStreetName">Street Name:</label>
-                <span class="div_span" id="streetNameSpan"></span>
-            </div>
-            
-            <div class="div_input">
-                <input type="text" id="aSuburb" class="textInput" required="">
-                <label for="aSuburb">Suburb:</label>
-                <span class="div_span" id="suburbSpan"></span>
-            </div>
-            
-            <div class="div_input">
-                <input type="text" id="aPostcode" class="textInput" required="">
-                <label for="aPostcode">Postcode:</label>
-                <span class="div_span" id="postcodeSpan"></span>
+                <input type="text" id="aFullAddress" class="textInput" required="">
+                <label for="aFullAddress">Address:</label>
+                <span class="div_span" id="addressSpan"></span>
             </div>
 
             <div class="div_button">
                 <button class="btn">Reset</button>
             </div>
-            
-            
+
+
         </form>
-        
+
         <div class="div_button">
             <button class="btn" id="submitButton">Submit</button>
         </div>
     </div>
 
-    
-    
+
+
 </body>
+
 </html>

@@ -1,6 +1,11 @@
 const asyncHandler = require("express-async-handler");
 const Sales = require("../models/saleModel");
+const Members = require("../models/memberModel");
 const Sequelize = require("sequelize");
+
+function generateSaleId() {
+	return crypto.randomBytes(5).toString("hex");
+}
 
 //---------------API---------------
 //@access public
@@ -38,7 +43,36 @@ const updateSale = asyncHandler(async (req, res) => {
 //@access public
 //@ route POST /api/sales/
 const createSale = asyncHandler(async (req, res) => {
-	const { SaleId, MemberId, ReceiptNumber, SaleDate, PaymentMethod } = req.body;
+	const unwantedFields = ["SaleId"];
+	for (const field of unwantedFields) {
+		if (req.body[field]) {
+			return res
+				.status(400)
+				.json({
+					error: `Field ${field} should not be provided.  Stop iNjEcTing bRo`,
+				});
+		}
+	}
+	// Check if MemberId exists in the Member table
+	const memberExists = await Members.findOne({ where: { MemberId } });
+
+	if (!memberExists) {
+		return res.status(400).json({
+			error: "Invalid/ Cannot find MemberId. Sale cannot be created.",
+		});
+	}
+
+	const { MemberId, ReceiptNumber, SaleDate, PaymentMethod } = req.body;
+
+	//Generating SaleId
+	let SaleId = generateMemberId();
+	let existingSale = await Sales.findOne({ where: { SaleId } });
+
+	// Ensure the generated MemberId is unique
+	while (existingSale) {
+		SaleId = generateSaleId();
+		existingMember = await Sales.findOne({ where: { SaleId } });
+	}
 
 	try {
 		const sale = await Sales.create({
@@ -66,7 +100,7 @@ const deleteSale = asyncHandler(async (req, res) => {
 
 	if (!sale) {
 		res.status(404);
-		throw new Error(`Sale with SaleId: \`${req.params.id}\` not found`);
+		throw new Error(`Sale with Id: \`${req.params.id}\` not found`);
 	}
 
 	await sale.destroy();
