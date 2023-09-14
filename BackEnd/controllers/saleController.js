@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Sales = require("../models/saleModel");
 const Members = require("../models/memberModel");
 const Sequelize = require("sequelize");
+const crypto = require("crypto");
 
 function generateSaleId() {
 	return crypto.randomBytes(5).toString("hex");
@@ -56,6 +57,8 @@ const updateSale = asyncHandler(async (req, res) => {
 //@access public
 //@ route POST /api/sales/
 const createSale = asyncHandler(async (req, res) => {
+	const { MemberId, ReceiptNumber, SaleDate, PaymentMethod } = req.body;
+
 	const unwantedFields = ["SaleId"];
 	for (const field of unwantedFields) {
 		if (req.body[field]) {
@@ -73,10 +76,8 @@ const createSale = asyncHandler(async (req, res) => {
 		});
 	}
 
-	const { MemberId, ReceiptNumber, SaleDate, PaymentMethod } = req.body;
-
 	//Generating SaleId
-	let SaleId = generateMemberId();
+	let SaleId = generateSaleId();
 	let existingSale = await Sales.findOne({ where: { SaleId } });
 
 	// Ensure the generated MemberId is unique
