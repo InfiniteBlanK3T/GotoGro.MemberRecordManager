@@ -13,6 +13,7 @@ const Member = sequelize.define(
 			type: DataTypes.STRING(50),
 			allowNull: false,
 			validate: {
+				len: [1, 50],
 				notEmpty: {
 					msg: "FirstName is required",
 				},
@@ -22,6 +23,7 @@ const Member = sequelize.define(
 			type: DataTypes.STRING(50),
 			allowNull: false,
 			validate: {
+				len: [1, 50],
 				notEmpty: {
 					msg: "LastName is required",
 				},
@@ -39,7 +41,7 @@ const Member = sequelize.define(
 			},
 		},
 		Email: {
-			type: DataTypes.STRING(20),
+			type: DataTypes.STRING(100),
 			allowNull: false,
 			unique: true,
 			validate: {
@@ -52,8 +54,9 @@ const Member = sequelize.define(
 		},
 		StreetNumber: {
 			type: DataTypes.STRING(5),
-			allowNull: false,
+			allowNull: true,
 			validate: {
+				len: [1, 5],
 				notEmpty: {
 					msg: "StreetNumber is required",
 				},
@@ -63,6 +66,7 @@ const Member = sequelize.define(
 			type: DataTypes.STRING(20),
 			allowNull: false,
 			validate: {
+				len: [3, 20],
 				notEmpty: {
 					msg: "StreetName is required",
 				},
@@ -72,15 +76,17 @@ const Member = sequelize.define(
 			type: DataTypes.STRING(20),
 			allowNull: false,
 			validate: {
+				len: [3, 20],
 				notEmpty: {
 					msg: "Suburb is required",
 				},
 			},
 		},
 		PostCode: {
-			type: DataTypes.STRING(10),
-			allowNull: false,
+			type: DataTypes.STRING(4),
+			allowNull: true,
 			validate: {
+				len: [4, 4],
 				notEmpty: {
 					msg: "PostCode is required",
 				},

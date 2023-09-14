@@ -7,10 +7,7 @@ class GetMemberFormData {
 			this.lastName,
 			this.email,
 			this.phone,
-			this.streetNo,
-			this.streetName,
-			this.suburb,
-			this.postcode
+			this.fullAddress
 		);
 	}
 
@@ -28,17 +25,8 @@ class GetMemberFormData {
 	setPhone(aPhone) {
 		this.phone = aPhone;
 	}
-	setStreetNo(aStreetNo) {
-		this.streetNo = aStreetNo;
-	}
-	setStreetName(aStreetName) {
-		this.streetName = aStreetName;
-	}
-	setSuburb(aSuburb) {
-		this.suburb = aSuburb;
-	}
-	setPostcode(aPostcode) {
-		this.postcode = aPostcode;
+	setFullAddress(aFullAddress) {
+		this.fullAddress = aFullAddress;
 	}
 
 	//getters
@@ -55,17 +43,8 @@ class GetMemberFormData {
 	getPhone() {
 		return this.phone;
 	}
-	getStreetNo() {
-		return this.streetNo;
-	}
-	getStreetName() {
-		return this.streetName;
-	}
-	getSuburb() {
-		return this.suburb;
-	}
-	getPostcode() {
-		return this.postcode;
+	getFullAddress() {
+		return this.fullAddress;
 	}
 }
 
@@ -113,20 +92,14 @@ const firstNameInput = document.getElementById("aFirstName");
 const lastNameInput = document.getElementById("aLastName");
 const emailInput = document.getElementById("aEmail");
 const phoneInput = document.getElementById("aPhone");
-const streetNoInput = document.getElementById("aStreetNo");
-const streetNameInput = document.getElementById("aStreetName");
-const suburbInput = document.getElementById("aSuburb");
-const postcodeInput = document.getElementById("aPostcode");
+const addressInput = document.getElementById("aFullAddress");
 
 //spans
 const firstNameSpan = document.getElementById("firstNameSpan");
 const lastNameSpan = document.getElementById("lastNameSpan");
 const emailSpan = document.getElementById("emailSpan");
 const phoneSpan = document.getElementById("phoneSpan");
-const streetNoSpan = document.getElementById("streetNoSpan");
-const streetNameSpan = document.getElementById("streetNameSpan");
-const suburbSpan = document.getElementById("suburbSpan");
-const postcodeSpan = document.getElementById("postcodeSpan");
+const addressSpan = document.getElementById("addressSpan");
 
 //buttons
 const submitButton = document.getElementById("submitButton");
@@ -139,10 +112,6 @@ const fv_firstName = new FormValidation(firstNameRegEx);
 const fv_lastName = new FormValidation(lastNameRegEx);
 const fv_email = new FormValidation(emailRegEx);
 const fv_phone = new FormValidation(phoneRegEx);
-const fv_streetNo = new FormValidation(streetNoRegEx);
-const fv_streetName = new FormValidation(streetNameRegEx);
-const fv_suburb = new FormValidation(suburbRegEx);
-const fv_postcode = new FormValidation(postcodeRegEx);
 
 // declaring variables
 
@@ -157,11 +126,38 @@ const setMemberData = () => {
 	newMember.setLastName(lastNameInput.value);
 	newMember.setEmail(emailInput.value);
 	newMember.setPhone(phoneInput.value);
-	newMember.setStreetNo(streetNoInput.value);
-	newMember.setStreetName(streetNameInput.value);
-	newMember.setSuburb(suburbInput.value);
-	newMember.setPostcode(postcodeInput.value);
+	newMember.setFullAddress(addressInput.value);
 };
+
+//-------------Geo Validation API Implement--------------------
+const input = document.getElementById("aFullAddress");
+const autocomplete = new google.maps.places.Autocomplete(input);
+
+autocomplete.addListener("place_changed", function () {
+	const place = autocomplete.getPlace();
+	let addressComponents = {};
+	for (const component of place.address_components) {
+		const componentType = component.types[0];
+		switch (componentType) {
+			case "street_number":
+				addressComponents.StreetNumber = component.long_name;
+				break;
+			case "route":
+				addressComponents.StreetName = component.long_name;
+				break;
+			case "locality":
+				addressComponents.Suburb = component.long_name;
+				break;
+			case "postal_code":
+				addressComponents.PostCode = component.long_name;
+				break;
+			case "country":
+				addressComponents.Country = component.long_name;
+				break;
+		}
+	}
+	console.log(addressComponents);
+});
 
 // function to perform form validation
 
@@ -200,7 +196,8 @@ const formValidationFunc = () => {
 	} else {
 		phoneSpan.innerHTML = "";
 	}
-	// COmment out testing Geo Validation
+	// -------------Google Geo Validation does this?----
+	// Not sure double check
 	// fv_streetNo.setInput(newMember.getStreetNo());
 	// if (!fv_streetNo.isInputValid()) {
 	// 	streetNoSpan.innerHTML = "Street no must only contain numbers and letters!";
@@ -250,10 +247,7 @@ const onSubmitButtonClickHandler = () => {
 			LastName: newMember.getLastName(),
 			Email: newMember.getEmail(),
 			Phone: newMember.getPhone(),
-			StreetNumber: newMember.getStreetNo(),
-			StreetName: newMember.getStreetName(),
-			Suburb: newMember.getSuburb(),
-			PostCode: newMember.getPostcode(),
+			FullAddress: newMember.getFullAddress(),
 		};
 		//BackEnd - fetch from API
 		fetch("http://localhost:5732/api/member", {

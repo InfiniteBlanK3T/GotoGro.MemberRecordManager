@@ -8,6 +8,7 @@ const Sales = sequelize.define(
 			type: DataTypes.STRING(10),
 			allowNull: false,
 			primaryKey: true,
+			autoIncrement: true,
 			validate: {
 				notEmpty: {
 					msg: "SaleId is required",
