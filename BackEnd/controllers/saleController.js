@@ -36,6 +36,19 @@ const updateSale = asyncHandler(async (req, res) => {
 		throw new Error(`Sale with SaleId: \`${req.params.id}\` not found`);
 	}
 
+	// Check if the provided MemberId exists in the Member table
+	if (req.body.MemberId) {
+		const memberExists = await Member.findOne({
+			where: { MemberId: req.body.MemberId },
+		});
+		if (!memberExists) {
+			return res.status(400).json({
+				error:
+					"Invalid/ Undefined MemberId. Sale cannot be updated with this MemberId.",
+			});
+		}
+	}
+
 	sale = await sale.update(req.body);
 	res.status(200).json(sale);
 });
@@ -46,11 +59,9 @@ const createSale = asyncHandler(async (req, res) => {
 	const unwantedFields = ["SaleId"];
 	for (const field of unwantedFields) {
 		if (req.body[field]) {
-			return res
-				.status(400)
-				.json({
-					error: `Field ${field} should not be provided.  Stop iNjEcTing bRo`,
-				});
+			return res.status(400).json({
+				error: `Field ${field} should not be provided.  Stop iNjEcTing bRo`,
+			});
 		}
 	}
 	// Check if MemberId exists in the Member table
