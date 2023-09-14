@@ -39,7 +39,7 @@ const updateSale = asyncHandler(async (req, res) => {
 
 	// Check if the provided MemberId exists in the Member table
 	if (req.body.MemberId) {
-		const memberExists = await Member.findOne({
+		const memberExists = await Members.findOne({
 			where: { MemberId: req.body.MemberId },
 		});
 		if (!memberExists) {
