@@ -129,7 +129,7 @@ const setMemberData = () => {
 	newMember.setFullAddress(addressInput.value);
 };
 
-//-------------Geo Validation API Implement--------------------
+//-------------Geo Validation API Segmentation --------------------
 const input = document.getElementById("aFullAddress");
 const autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -259,9 +259,11 @@ const onSubmitButtonClickHandler = () => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
+				alert("Sucess!");
 				console.log("Success:", data);
 			})
 			.catch((error) => {
+				alert("Error");
 				console.error("Error:", error);
 			});
 	}
