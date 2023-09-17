@@ -259,7 +259,7 @@ const onSubmitButtonClickHandler = () => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				alert("Sucess!");
+				alert("Success!");
 				console.log("Success:", data);
 			})
 			.catch((error) => {

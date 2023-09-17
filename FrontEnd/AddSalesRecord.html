@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="AddSalesRecord.js" defer></script>
 </head>
 <body>
     <h1>Add Sales Record</h1>
     <div>
-        <form action="">
+        
             <div>
                 <label for="MemberId">Member ID:</label>
                 <input type="text" id="MemberId" class="textInput">
@@ -18,25 +19,23 @@
                 <select name="paymethod" id="paymethod">
                     <option value=""></option>
                     <option value="Cash">Cash</option>
-                    <option value="Credit Card">Card</option>
-                    <option value="Debit Card">Card</option>
-                    <option value="Online Transfer">Card</option>
+                    <option value="CreditCard">Credit Card</option>
+                    <option value="DebitCard">DebitCard</option>
+                    <option value="OnlineTransfer">OnlineTransfer</option>
                 </select>
             </div>
             <div>
-                <label for="TotalSale">Recipt number</label>
-                <input type="text" id="TotalSale" class="textInput">
+                <label for="ReceiptNo">Receipt number</label>
+                <input type="text" id="ReceiptNo" class="textInput">
             </div>
-            <div>
-                <button>Submit</button>
+            <div class="div_button">
+                <button class="btn" id="submitButton">Submit</button>
             </div>
             <div>
                 <button>Reset</button>
             </div>
-        </form>
+        
     </div>
-
-    
     
 </body>
 </html>
