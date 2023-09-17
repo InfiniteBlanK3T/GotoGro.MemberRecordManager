@@ -8,6 +8,19 @@ function generateSaleId() {
 	return crypto.randomBytes(5).toString("hex");
 }
 
+function generateReceiptNumber() {
+	const currentDate = new Date();
+	const year = currentDate.getFullYear();
+	const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+	const date = String(currentDate.getDate()).padStart(2, "0");
+
+	const hour = String(now.getHours()).padStart(2, "0");
+	const minute = String(now.getMinutes()).padStart(2, "0");
+
+	const randomBytes = crypto.randomBytes(5).toString("hex");
+	return `R${year}${month}${date}-${hour}${min}-${randomBytes}`;
+}
+
 //---------------API---------------
 //@access public
 //@ route GET /api/sales/
@@ -32,6 +45,7 @@ const getSale = asyncHandler(async (req, res) => {
 //@ route PUT /api/sales/:id
 const updateSale = asyncHandler(async (req, res) => {
 	let sale = await Sales.findByPk(req.params.id);
+
 	if (!sale) {
 		res.status(404);
 		throw new Error(`Sale with SaleId: \`${req.params.id}\` not found`);
@@ -57,9 +71,9 @@ const updateSale = asyncHandler(async (req, res) => {
 //@access public
 //@ route POST /api/sales/
 const createSale = asyncHandler(async (req, res) => {
-	const { MemberId, ReceiptNumber, SaleDate, PaymentMethod } = req.body;
+	const { MemberId, SaleDate, PaymentMethod } = req.body;
 
-	const unwantedFields = ["SaleId"];
+	const unwantedFields = ["SaleId", "ReceiptNumber"];
 	for (const field of unwantedFields) {
 		if (req.body[field]) {
 			return res.status(400).json({
@@ -80,11 +94,13 @@ const createSale = asyncHandler(async (req, res) => {
 	let SaleId = generateSaleId();
 	let existingSale = await Sales.findOne({ where: { SaleId } });
 
-	// Ensure the generated MemberId is unique
+	// Ensure the generated SaleId is unique
 	while (existingSale) {
 		SaleId = generateSaleId();
 		existingMember = await Sales.findOne({ where: { SaleId } });
 	}
+
+	const ReceiptNumber = generateReceiptNumber();
 
 	try {
 		const sale = await Sales.create({
