@@ -81,3 +81,30 @@ body
 
 /* Button Styling */
 
+.btn
+{
+	background-color: slateblue; 
+	color: white;
+	border: none;
+	border-radius: 10px;
+	text-align: center;
+	display: inline-block;
+	font-size: 26px;
+	transition-duration: 0.5s;
+	
+}
+.btn:hover 
+{
+	background-color: rgb(84, 133, 36); /* Green */
+  color: black;
+}
+
+.btn:focus /* Allows for keboard interactivity via tab */
+{
+	outline-color: #e74c3c;
+	outline-style: solid;
+	box-shadow: 0 0 0 4px red;
+	transition: 0.3s;
+
+}
+
