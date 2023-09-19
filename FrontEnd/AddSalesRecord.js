@@ -147,6 +147,23 @@ const onSubmitButtonClickHandler = () => {
             ReceiptNumber: salesRecord.getReceiptNo()
         }
 
+        fetch("http://localhost:5732/api/Sale", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(salesRecordObject),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				alert("Success!");
+				console.log("Success:", data);
+			})
+			.catch((error) => {
+				alert("Error");
+				console.error("Error:", error);
+			});
+
         console.log(salesRecordObject);
 
     }
