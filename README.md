@@ -4,20 +4,21 @@
 
 > [!NOTE]
 > Please follow the instructions below
+> Hit me up! [@Thomas](https://github.com/InfiniteBlanK3T) if you have installation issue.
 
 # The project requires:
 
 - [Node JS 18.17.1](https://nodejs.org/en)
 
 
-# Front End
+# 1. Front End
 > [!Important]
-> Remember to has to be in /root/ to run ```http-server``` . [NodeJS 18.17 is required!](https://nodejs.org/en)
- - Once Node.js is installed, you can install http-server globally on Powershell or CMD: ```npm install -g http-server```
- - After installation, run in the directory that you want to host ```http-server```.
- - Since there isn't any configuration for Home Page once connected navigate to the FrontEnd folder and choose which HTML you want to test.
+> Remember it has to be in /root/ to run ```http-server``` . [NodeJS 18.17 is required!](https://nodejs.org/en)
+ 1. Once Node.js is installed, you can install http-server globally on Powershell or CMD: ```npm install -g http-server```
+ 2. After installation, run in the directory that you want to host ```http-server```.
+ 3. Since there isn't any configuration for Home Page once connected navigate to the FrontEnd folder and choose which HTML you want to test.
 
-## Running localhost database:
+# 2. Running localhost database
 
 1. Install this to run local Database server -> [XAMP](https://www.apachefriends.org/download.html)
   > Just need to enable only MySQL
@@ -28,11 +29,10 @@
   > Once this command runs, check for newly created tables inside your schema. ```swe200001```
 
 
-# Back End
+# 3. Back End
 ## Dependencies Installation guide
 > [!Important]
 > Remember to install dependencies (node_modules) INSIDE ```/BackEnd/.. ```
-
 
 
 1. Moving into /BackEnd/ OR subfolder -> `cd BackEnd/`
