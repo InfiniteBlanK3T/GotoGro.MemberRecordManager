@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AddSalesRecord</title>
+    <script src="RegExSales.js" defer></script>
     <script src="AddSalesRecord.js" defer></script>
 </head>
 <body>
@@ -13,20 +14,23 @@
             <div>
                 <label for="MemberId">Member ID:</label>
                 <input type="text" id="MemberId" class="textInput">
+                <span class="div_span" id="memberIdSpan"></span>
             </div>
             <div>
                 <label for="paymethod">Payment Method:</label>
                 <select name="paymethod" id="paymethod">
-                    <option value=""></option>
+                    <option value="">- Choose -</option>
                     <option value="Cash">Cash</option>
                     <option value="CreditCard">Credit Card</option>
                     <option value="DebitCard">DebitCard</option>
                     <option value="OnlineTransfer">OnlineTransfer</option>
                 </select>
+                <span class="div_span" id="paymentMethodSpan"></span>
             </div>
             <div>
                 <label for="ReceiptNo">Receipt number</label>
                 <input type="text" id="ReceiptNo" class="textInput">
+                <span class="div_span" id="receiptNoSpan"></span>
             </div>
             <div class="div_button">
                 <button class="btn" id="submitButton">Submit</button>
