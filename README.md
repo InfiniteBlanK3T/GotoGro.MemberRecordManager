@@ -34,11 +34,13 @@
 > [!Important]
 > Remember to install dependencies (node_modules) INSIDE ```/BackEnd/.. ```
 
+> [!Warning]
+> Make sure to have your database server ready before running backend server (3.) ```swe200001```
+
 
 1. Moving into /BackEnd/ OR subfolder -> `cd BackEnd/`
 2. Run this `npm i` for installing dependencies
-> [!Important]
-> Make sure to have your database server ready before running backend server ```swe200001```
+
 3. Then you could run our BackEnd locally with -> `npm run dev`
 
 
