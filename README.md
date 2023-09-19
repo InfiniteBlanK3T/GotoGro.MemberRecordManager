@@ -7,11 +7,13 @@
 > Hit me up! [@Thomas](https://github.com/InfiniteBlanK3T) if you have installation issue.
 
 # Contributors:
- - [@Oliver](https://github.com/OliverH1337) ID: 101626533 
- - [@Thomas](https://github.com/InfiniteBlanK3T) ID: 103488272
- - [@Stefan](https://github.com/623190x) ID: 623190x
+ - [@Oliver](https://github.com/OliverH1337) ID: 101626533 | Scrum Master / Boss
+ - [@Kyle]() Robertson ID: 103352089 | FrontEnd Developer - Designer
+ - [@Stefan](https://github.com/623190x) ID: 623190x | FrontEnd Developer/ Agressive Tester
+ - [@Thomas](https://github.com/InfiniteBlanK3T) ID: 103488272 | BackEnd Developer / Code Reader 
+
    <YOUR EMAIL HERE KYLE>
- - [@Kyle]() Robertson ID: 103352089 
+
 
 # The project requires:
 
