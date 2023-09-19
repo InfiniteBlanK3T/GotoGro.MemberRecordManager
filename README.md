@@ -12,8 +12,9 @@
 
 # Front End
 > [!Important]
-> Remember to has to be in /root/ to run ```http-server``` 
- - Run ```http-server``` to run the Web Development server for Front End
+> Remember to has to be in /root/ to run ```http-server``` . [NodeJS 18.17 is required!](https://nodejs.org/en)
+ - Once Node.js is installed, you can install http-server globally using npm: ```npm install -g http-server```
+ - After installation, run in the directory that you want to host ```http-server```.
  - Since there isn't any configuration for Home Page once connected navigate to the FrontEnd folder and choose which HTML you want to test.
 
 # Back End
