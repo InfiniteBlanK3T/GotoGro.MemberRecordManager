@@ -145,7 +145,7 @@ const onSubmitButtonClickHandler = () => {
             MemberID: salesRecord.getMemberId(),
             PaymentMethod: salesRecord.getPaymentMethod(),
             ReceiptNumber: salesRecord.getReceiptNo()
-        }
+        };
 
         fetch("http://localhost:5732/api/Sale", {
 			method: "POST",
@@ -167,8 +167,6 @@ const onSubmitButtonClickHandler = () => {
         console.log(salesRecordObject);
 
     }
-
-    
 
 
 }
