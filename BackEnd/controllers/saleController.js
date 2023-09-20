@@ -14,8 +14,8 @@ function generateReceiptNumber() {
 	const month = String(currentDate.getMonth() + 1).padStart(2, "0");
 	const date = String(currentDate.getDate()).padStart(2, "0");
 
-	const hour = String(now.getHours()).padStart(2, "0");
-	const minute = String(now.getMinutes()).padStart(2, "0");
+	const hour = String(currentDate.getHours()).padStart(2, "0");
+	const min = String(currentDate.getMinutes()).padStart(2, "0");
 
 	const randomBytes = crypto.randomBytes(5).toString("hex");
 	return `R${year}${month}${date}-${hour}${min}-${randomBytes}`;

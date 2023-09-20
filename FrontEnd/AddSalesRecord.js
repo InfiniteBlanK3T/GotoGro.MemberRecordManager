@@ -4,22 +4,46 @@ class GetSalesRecordData
 {
     constructor() {}
 
-    setMemberId(aMemberId) { this.memberId = aMemberId; }
-    setPaymentMethod(aPaymentMethod) { this.paymentMethod = aPaymentMethod; }
-    setReceiptNo(aReceiptNo) { this.receiptNo = aReceiptNo; }
 
-    getMemberId() { return this.memberId; }
-    getPaymentMethod() { return this.paymentMethod; }
-    getReceiptNo() { return this.receiptNo; }
+        consoleSaleDetails(){          
+            console.log(
+                this.MemberId,
+                this.paymethod,
+                this.receiptNo
+            )
+        }
 
-    consoleSaleDetails()
-    {
-        console.log(
-            this.memberId,
-            this.paymentMethod,
-            this.receiptNo
-        )
+
+    setMemberId(MemberId) {
+        this.MemberId = MemberId;
     }
+
+    setpaymethod(paymethod){
+        this.paymethod = paymethod;
+    }
+
+    setReceiptNo(ReceiptNo){
+        this.ReceiptNo =  ReceiptNo;
+    }
+    
+
+    
+        //getters
+    
+        getMemberId() {
+            return this.MemberId;
+        }
+        getpaymethod() {
+            return this.paymethod;
+        }
+        getReceiptNo(){
+            return this.ReceiptNo;
+        }
+
+
+
+
+
 }
 
 class FormValidation {
@@ -45,28 +69,33 @@ class FormValidation {
 		return this.regEx;
 	}
 
-	isInputValid() {
-		if (this.input == "") {
-			return false;
-		} else if (!this.input.match(this.regEx)) {
-			return false;
-		} else {
-			return true;
-		}
-	}
+	
+
+
+
+        
+    isInputValid() {
+        if (this.input == "") {
+            return false;
+        } else if (!this.input.match(this.regEx)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
 
 
 // declaring html element constants
 //inputs/select
-const memberIdInput = document.getElementById("MemberId");
-const paymentMethodSelect = document.getElementById("paymethod");
+const MemberIdInput = document.getElementById("MemberId");
+const paymethodSelect = document.getElementById("paymethod");
 const receiptNoInput = document.getElementById("ReceiptNo");
 
 //spans
 
-const memberIdSpan = document.getElementById("memberIdSpan");
-const paymentMethodSpan = document.getElementById("paymentMethodSpan");
+const MemberIdSpan = document.getElementById("MemberIdSpan");
+const paymethodSpan = document.getElementById("paymethodSpan");
 const receiptNoSpan = document.getElementById("receiptNoSpan");
 
 const submitButton = document.getElementById("submitButton");
@@ -74,8 +103,8 @@ const submitButton = document.getElementById("submitButton");
 // declaring class objects
 const salesRecord = new GetSalesRecordData();
 
-const fv_memberId = new FormValidation(MemberIdRegEx);
-const fv_paymentMethod = new FormValidation(PaymentMethodRegEx);
+const fv_MemberId = new FormValidation(MemberIdRegEx);
+const fv_paymethod = new FormValidation(paymethodRegEx);
 const fv_receiptNo = new FormValidation(ReceiptNoRegEx);
 
 // declaring variables
@@ -85,8 +114,8 @@ let AreInputsAllValid = true;
 // function to set the user input to the GetSalesRecordData
 
 const setSalesRecord = () => {
-    salesRecord.setMemberId(memberIdInput.value);
-    salesRecord.setPaymentMethod(paymentMethodSelect.value);
+    salesRecord.setMemberId(MemberIdInput.value);
+    salesRecord.setpaymethod(paymethodSelect.value);
     salesRecord.setReceiptNo(receiptNoInput.value);
 }
 
@@ -95,8 +124,8 @@ const setSalesRecord = () => {
 const formValidationFunc = () => {
     let areInputsAllValid = true;
 
-    fv_memberId.setInput(salesRecord.getMemberId());
-    if(!fv_memberId.isInputValid())
+    fv_MemberId.setInput(salesRecord.getMemberId());
+    if(!fv_MemberId.isInputValid())
     {
         memberIdSpan.innerHTML = "Member Id must only contain numbers!";
         areInputsAllValid = false;
@@ -106,8 +135,8 @@ const formValidationFunc = () => {
         memberIdSpan.innerHTML = "";
     }
 
-    fv_paymentMethod.setInput(salesRecord.getPaymentMethod());
-    if (!fv_paymentMethod.isInputValid()) 
+    fv_paymethod.setInput(salesRecord.getpaymethod());
+    if (!fv_paymethod.isInputValid()) 
     {
         paymentMethodSpan.innerHTML = "You must select a payment method!"; 
         areInputsAllValid = false;
@@ -142,12 +171,13 @@ const onSubmitButtonClickHandler = () => {
     if (AreInputsAllValid) //update later with form validation check
     {
         const salesRecordObject = {
-            MemberID: salesRecord.getMemberId(),
-            PaymentMethod: salesRecord.getPaymentMethod(),
-            ReceiptNumber: salesRecord.getReceiptNo()
+            MemberId: salesRecord.getMemberId(),
+            paymethod: salesRecord.getpaymethod()
+           // ReceiptNumber: salesRecord.getReceiptNo()
         };
+        console.log(salesRecordObject)
 
-        fetch("http://localhost:5732/api/Sale", {
+        fetch("http://localhost:5732/api/sale", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -163,12 +193,12 @@ const onSubmitButtonClickHandler = () => {
 				alert("Error");
 				console.error("Error:", error);
 			});
-
+            
         console.log(salesRecordObject);
 
     }
-
-
+    
+    salesRecord.consoleSaleDetails();
 }
 
 submitButton.onclick = onSubmitButtonClickHandler;
