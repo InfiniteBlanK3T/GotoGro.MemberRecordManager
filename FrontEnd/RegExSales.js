@@ -1,4 +1,4 @@
 
-const MemberIdRegEx = /^[a-zA-Z0-9]{2,20}/;
-const PaymentMethodRegEx = /^[a-zA-Z]{2,20}/;
-const ReceiptNoRegEx = /^[a-zA-Z0-9]{2,20}/;
+const MemberIdRegEx = /^[a-zA-Z0-9]{10}/;
+const PaymentMethodRegEx = /^(Credit|credit|EFTPOS|eftpos|Cash|cash|Voucher|voucher)/;
+const ReceiptNoRegEx = /^[0-9]{10}/;
