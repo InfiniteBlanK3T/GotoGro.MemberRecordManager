@@ -18,7 +18,11 @@ function generateReceiptNumber() {
 	const min = String(currentDate.getMinutes()).padStart(2, "0");
 
 	const randomBytes = crypto.randomBytes(5).toString("hex");
-	return `R${year}${month}${date}-${hour}${min}-${randomBytes}`;
+	//return `R${year}${month}${date}-${hour}${min}-${randomBytes}`;
+	//Had to comment this out because it would generate a string longer than
+	//the field in the DB which would lead to everyone having the same
+	//receipt number if they were inputted on the same day
+	return randomBytes;
 }
 
 //---------------API---------------
