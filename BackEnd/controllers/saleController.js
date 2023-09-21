@@ -25,6 +25,7 @@ function generateReceiptNumber() {
 	return randomBytes;
 }
 
+// Generate current date in YYYY-MM-DD format to add to the database when adding a sales record
 function generateDate() {
 	const today = new Date();
 	const year = today.getFullYear();
@@ -111,7 +112,7 @@ const createSale = asyncHandler(async (req, res) => {
 		SaleId = generateSaleId();
 		existingMember = await Sales.findOne({ where: { SaleId } });
 	}
-
+	// get both the current data and the receipt nubmer so that it doesn't have to be entered by the front end
 	const ReceiptNumber = generateReceiptNumber();
 	const SaleDate = generateDate();
 
