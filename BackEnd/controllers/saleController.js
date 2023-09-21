@@ -25,6 +25,14 @@ function generateReceiptNumber() {
 	return randomBytes;
 }
 
+function generateDate() {
+	const today = new Date();
+	const year = today.getFullYear();
+	const month = String(today.getMonth() + 1).padStart(2, "0");
+	const date = String(today.getDate()).padStart(2, "0");
+	return `${year}-${month}-${date}`;
+}
+
 //---------------API---------------
 //@access public
 //@ route GET /api/sales/
@@ -75,7 +83,7 @@ const updateSale = asyncHandler(async (req, res) => {
 //@access public
 //@ route POST /api/sales/
 const createSale = asyncHandler(async (req, res) => {
-	const { MemberId, SaleDate, PaymentMethod } = req.body;
+	const { MemberId, PaymentMethod } = req.body;
 
 	const unwantedFields = ["SaleId", "ReceiptNumber"];
 	for (const field of unwantedFields) {
@@ -105,6 +113,7 @@ const createSale = asyncHandler(async (req, res) => {
 	}
 
 	const ReceiptNumber = generateReceiptNumber();
+	const SaleDate = generateDate();
 
 	try {
 		const sale = await Sales.create({

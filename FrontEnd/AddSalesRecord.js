@@ -9,9 +9,7 @@ class GetSalesRecordData
         consoleSaleDetails(){          
             console.log(
                 this.MemberId,
-                this.paymethod,
-                this.receiptNo,
-                this.SaleDate
+                this.paymethod
             );
         }
 
@@ -26,15 +24,7 @@ class GetSalesRecordData
         console.log(this.paymethod);
     }
 
-    setReceiptNo(ReceiptNo){
-        this.ReceiptNo =  ReceiptNo;
-        console.log(this.ReceiptNo);
-    }
 
-    setSaleDate(SaleDate){
-        this.SaleDate = SaleDate;
-        console.log(this.SaleDate);
-    }
     
 
     
@@ -46,13 +36,7 @@ class GetSalesRecordData
         getpaymethod() {
             return this.paymethod;
         }
-        getReceiptNo(){
-            return this.ReceiptNo;
-        }
-        getSaleDate()
-        {
-            return this.SaleDate;
-        }
+
 
 
 
@@ -99,14 +83,13 @@ class FormValidation {
 //inputs/select
 const MemberIdInput = document.getElementById("MemberId");
 const paymethodSelect = document.getElementById("paymethod");
-const receiptNoInput = document.getElementById("ReceiptNo");
-const SaleDateInput = document.getElementById("SaleDate")
+
 
 //spans
 
-const MemberIdSpan = document.getElementById("MemberIdSpan");
-const paymethodSpan = document.getElementById("paymethodSpan");
-const receiptNoSpan = document.getElementById("receiptNoSpan");
+const MemberIdSpan = document.getElementById("memberIdSpan");
+const paymethodSpan = document.getElementById("paymentMethodSpan");
+
 
 const submitButton = document.getElementById("submitButton");
 
@@ -115,7 +98,7 @@ const salesRecord = new GetSalesRecordData();
 
 const fv_MemberId = new FormValidation(MemberIdRegEx);
 const fv_paymethod = new FormValidation(paymethodRegEx); 
-const fv_receiptNo = new FormValidation(ReceiptNoRegEx);
+
 
 // declaring variables
 
@@ -126,8 +109,7 @@ let AreInputsAllValid = true;
 const setSalesRecord = () => {
     salesRecord.setMemberId(MemberIdInput.value);
     salesRecord.setpaymethod(paymethodSelect.value);
-    salesRecord.setReceiptNo(receiptNoInput.value);
-    salesRecord.setSaleDate(SaleDateInput.value);
+
 }
 
 // function to perform form validation
@@ -138,7 +120,7 @@ const formValidationFunc = () => {
     fv_MemberId.setInput(salesRecord.getMemberId());
     if(!fv_MemberId.isInputValid())
     {
-        memberIdSpan.innerHTML = "Member Id must only contain numbers!";
+        memberIdSpan.innerHTML = "Member Id must only contain numbers and letters!";
         areInputsAllValid = false;
     }
     else
@@ -157,16 +139,6 @@ const formValidationFunc = () => {
         paymentMethodSpan.innerHTML = "";
     }
 
-    fv_receiptNo.setInput(salesRecord.getReceiptNo());
-    if (!fv_receiptNo.isInputValid()) 
-    {
-        receiptNoSpan.innerHTML = "Receipt Number must only contain numbers!"; 
-        areInputsAllValid = false;
-    }
-    else
-    {
-        receiptNoSpan.innerHTML = "";
-    }
 
     return areInputsAllValid;
 
@@ -177,16 +149,12 @@ const onSubmitButtonClickHandler = () => {
     console.log("submit button clicked");
 
     setSalesRecord();
-    AreInputsAllValid = true 
-    //formValidationFunc();
+    AreInputsAllValid = formValidationFunc();
     if (AreInputsAllValid) //update later with form validation check
     {
         const salesRecordObject = {
             MemberId: salesRecord.getMemberId(),
-            PaymentMethod: salesRecord.getpaymethod(),
-            //ReceiptNumber: salesRecord.getReceiptNo(),
-            //DB expects there to be no receipt number sent to it 
-            SaleDate: salesRecord.getSaleDate()
+            PaymentMethod: salesRecord.getpaymethod()
         };
         console.log(salesRecordObject)
 
