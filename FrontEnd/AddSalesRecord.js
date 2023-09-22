@@ -1,83 +1,8 @@
 //const { domainToUnicode } = require("url");
 
-
-class GetSalesRecordData 
-{
-    constructor() {}
-
-
-        consoleSaleDetails(){          
-            console.log(
-                this.MemberId,
-                this.paymethod
-            );
-        }
-
-
-    setMemberId(MemberId) {
-        this.MemberId = MemberId;
-        console.log(this.MemberId);
-    }
-
-    setpaymethod(paymethod){
-        this.paymethod = paymethod;
-        console.log(this.paymethod);
-    }
-
-
-    
-
-    
-        //getters
-    
-        getMemberId() {
-            return this.MemberId;
-        }
-        getpaymethod() {
-            return this.paymethod;
-        }
-
-
-
-
-
-}
-
-class FormValidation {
-	constructor(aRegEx) {
-		this.regEx = aRegEx;
-	}
-
-	//setters
-
-	setInput(aInput) {
-		this.input = aInput;
-	}
-	setRegEx(aRegEx) {
-		this.regEx = aRegEx;
-	}
-
-	//getters
-
-	getInput() {
-		return this.input;
-	}
-	getRegEx() {
-		return this.regEx;
-	}
-
-        
-    isInputValid() {
-        if (this.input == "") {
-            return false;
-        } else if (!this.input.match(this.regEx)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-}
-
+import { GetSalesRecordData } from "./GetSalesRecordData.js";
+import { FormValidation } from "./FormValidation.js";
+import { MemberIdRegEx, paymethodRegEx, ReceiptNoRegEx } from "./RegExSales.js";
 
 // declaring html element constants
 //inputs/select

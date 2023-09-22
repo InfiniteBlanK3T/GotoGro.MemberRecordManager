@@ -8,8 +8,9 @@
     <title>AddMember</title>
 
     <link rel="stylesheet" href="./styles/AddMember.css">
-    <script src="RegEx.js" defer></script>
-    <script src="AddMember.js" defer></script>
+    <!-- <script src="RegEx.js" defer></script> -->
+    <!-- <script src="AddMember.js" defer></script> -->
+    <script src="AddMember.js" type="module" defer></script>
     <!-- Geo Validation Google API -->
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHOHmzHqrRVeKdYs9zCknv_ukYMmbXl_0&libraries=places"></script>
@@ -19,7 +20,7 @@
 <body>
 
     <div class="box">
-        <form action="">
+        <!-- <form action=""> -->
             <h3 class="formHeading">Add New Member</h3>
 
             <div class="div_input">
@@ -53,15 +54,17 @@
             </div>
 
             <div class="div_button">
+                <button class="btn" id="submitButton">Submit</button>
+            </div>
+
+            <div class="div_button">
                 <button class="btn">Reset</button>
             </div>
 
 
-        </form>
+        <!-- </form> -->
 
-        <div class="div_button">
-            <button class="btn" id="submitButton">Submit</button>
-        </div>
+        
     </div>
 
 

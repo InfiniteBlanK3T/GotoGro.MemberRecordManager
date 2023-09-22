@@ -1,86 +1,9 @@
-class GetMemberFormData {
-	constructor() {}
 
-	consoleMemberDetails() {
-		console.log(
-			this.firstName,
-			this.lastName,
-			this.email,
-			this.phone,
-			this.fullAddress
-		);
-	}
+//importing classes 
 
-	//setters
-
-	setFirstName(aFirstName) {
-		this.firstName = aFirstName;
-	}
-	setLastName(aLastName) {
-		this.lastName = aLastName;
-	}
-	setEmail(aEmail) {
-		this.email = aEmail;
-	}
-	setPhone(aPhone) {
-		this.phone = aPhone;
-	}
-	setFullAddress(aFullAddress) {
-		this.fullAddress = aFullAddress;
-	}
-
-	//getters
-
-	getFirstName() {
-		return this.firstName;
-	}
-	getLastName() {
-		return this.lastName;
-	}
-	getEmail() {
-		return this.email;
-	}
-	getPhone() {
-		return this.phone;
-	}
-	getFullAddress() {
-		return this.fullAddress;
-	}
-}
-
-class FormValidation {
-	constructor(aRegEx) {
-		this.regEx = aRegEx;
-	}
-
-	//setters
-
-	setInput(aInput) {
-		this.input = aInput;
-	}
-	setRegEx(aRegEx) {
-		this.regEx = aRegEx;
-	}
-
-	//getters
-
-	getInput() {
-		return this.input;
-	}
-	getRegEx() {
-		return this.regEx;
-	}
-
-	isInputValid() {
-		if (this.input == "") {
-			return false;
-		} else if (!this.input.match(this.regEx)) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-}
+import { FormValidation } from "./FormValidation.js";
+import { GetMemberFormData } from "./GetMemberFormData.js";
+import { firstNameRegEx, lastNameRegEx, emailRegEx, phoneRegEx } from "./RegEx.js";
 
 // Declaring RegEx Constants
 
@@ -196,39 +119,6 @@ const formValidationFunc = () => {
 	} else {
 		phoneSpan.innerHTML = "";
 	}
-	// -------------Google Geo Validation does this?----
-	// Not sure double check
-	// fv_streetNo.setInput(newMember.getStreetNo());
-	// if (!fv_streetNo.isInputValid()) {
-	// 	streetNoSpan.innerHTML = "Street no must only contain numbers and letters!";
-	// 	areInputsAllValid = false;s
-	// } else {
-	// 	streetNoSpan.innerHTML = "";
-	// }
-
-	// fv_streetName.setInput(newMember.getStreetName());
-	// if (!fv_streetName.isInputValid()) {
-	// 	streetNameSpan.innerHTML = "Street name must only contain letters!";
-	// 	areInputsAllValid = false;
-	// } else {
-	// 	streetNameSpan.innerHTML = "";
-	// }
-
-	// fv_suburb.setInput(newMember.getSuburb());
-	// if (!fv_suburb.isInputValid()) {
-	// 	suburbSpan.innerHTML = "Suburb must only contain letters!";
-	// 	areInputsAllValid = false;
-	// } else {
-	// 	suburbSpan.innerHTML = "";
-	// }
-
-	// fv_postcode.setInput(newMember.getPostcode());
-	// if (!fv_postcode.isInputValid()) {
-	// 	postcodeSpan.innerHTML = "Postcode must contain 4 numbers!";
-	// 	areInputsAllValid = false;
-	// } else {
-	// 	postcodeSpan.innerHTML = "";
-	// }
 
 	return areInputsAllValid;
 };
@@ -237,6 +127,7 @@ const onSubmitButtonClickHandler = () => {
 	console.log("Submit Button Clicked");
 
 	setMemberData();
+	console.log("member: ", newMember);
 	AreInputsAllValid = formValidationFunc();
 
 	console.log("Are All Inputs Valid: ", AreInputsAllValid);
@@ -247,7 +138,7 @@ const onSubmitButtonClickHandler = () => {
 			LastName: newMember.getLastName(),
 			Email: newMember.getEmail(),
 			Phone: newMember.getPhone(),
-			FullAddress: newMember.getFullAddress(),
+			FullAddress: newMember.getFullAddress()
 		};
 		//BackEnd - fetch from API
 		fetch("http://localhost:5732/api/member", {
