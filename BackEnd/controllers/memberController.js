@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Member = require("../models/memberModel");
 const Sequelize = require("sequelize");
 const crypto = require("crypto");
+const { Op } = require("sequelize");
 
 function generateMemberId() {
 	return crypto.randomBytes(5).toString("hex");
@@ -57,11 +58,9 @@ const createMember = asyncHandler(async (req, res) => {
 	];
 	for (const field of unwantedFields) {
 		if (req.body[field]) {
-			return res
-				.status(400)
-				.json({
-					error: `Field ${field} should not be provided. Stop iNjEcTing bRo`,
-				});
+			return res.status(400).json({
+				error: `Field ${field} should not be provided. Stop iNjEcTing bRo`,
+			});
 		}
 	}
 
@@ -143,10 +142,32 @@ const deleteMember = asyncHandler(async (req, res) => {
 	res.status(204).send();
 });
 
+// Search Member based on either ID or their Name
+const searchMembers = async (req, res) => {
+	try {
+		const searchTerm = req.query.q;
+
+		const members = await Member.findAll({
+			where: {
+				[Op.or]: [
+					{ MemberId: { [Op.like]: "%" + searchTerm + "%" } },
+					{ FirstName: { [Op.like]: "%" + searchTerm + "%" } },
+					{ LastName: { [Op.like]: "%" + searchTerm + "%" } },
+				],
+			},
+		});
+
+		res.status(200).json(members);
+	} catch (error) {
+		res.status(500).json({ message: "Server Error", error });
+	}
+};
+
 module.exports = {
 	getAllMembers,
 	getMember,
 	updateMember,
 	createMember,
 	deleteMember,
+	searchMembers,
 };

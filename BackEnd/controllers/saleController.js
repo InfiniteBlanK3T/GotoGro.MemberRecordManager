@@ -9,21 +9,11 @@ function generateSaleId() {
 }
 
 function generateReceiptNumber() {
-	const currentDate = new Date();
-	const year = currentDate.getFullYear();
-	const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-	const date = String(currentDate.getDate()).padStart(2, "0");
-
-	const hour = String(currentDate.getHours()).padStart(2, "0");
-	const min = String(currentDate.getMinutes()).padStart(2, "0");
-
-	const randomBytes = crypto.randomBytes(5).toString("hex");
-	//return `R${year}${month}${date}-${hour}${min}-${randomBytes}`;
-	//Had to comment this out because it would generate a string longer than
-	//the field in the DB which would lead to everyone having the same
-	//receipt number if they were inputted on the same day
-	return randomBytes;
+	const randomBytes = crypto.randomBytes(4).toString("hex").toUpperCase();
+	return `R-${randomBytes}`;
 }
+
+console.log(generateReceiptNumber());
 
 // Generate current date in YYYY-MM-DD format to add to the database when adding a sales record
 function generateDate() {
