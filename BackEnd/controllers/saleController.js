@@ -13,8 +13,6 @@ function generateReceiptNumber() {
 	return `R-${randomBytes}`;
 }
 
-console.log(generateReceiptNumber());
-
 // Generate current date in YYYY-MM-DD format to add to the database when adding a sales record
 function generateDate() {
 	const today = new Date();
