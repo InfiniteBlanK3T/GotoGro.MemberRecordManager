@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AddSalesRecord</title>
+
+    <link rel="stylesheet" href="./styles/AddSalesRecord.css">
     <!-- <script src="RegExSales.js" defer></script> -->
     <script src="AddSalesRecord.js" type="module" defer></script>
 </head>
+
 <body>
     <h1>Add Sales Record</h1>
     <div>
-        
-            <div>
-                <label for="MemberId">Member ID:</label>
-                <input type="text" id="MemberId" class="textInput">
-                <span class="div_span" id="memberIdSpan"></span>
-            </div>
-            <div>
-                <label for="paymethod">Payment Method:</label>
-                <select name="paymethod" id="paymethod">
-                    <option value="">- Choose -</option>
-                    <option value="Cash">Cash</option>
-                    <option value="Credit Card">Credit Card</option>
-                    <option value="Debit Card">DebitCard</option>
-                    <option value="Online Transfer">OnlineTransfer</option>
-                </select>
-                <span class="div_span" id="paymentMethodSpan"></span>
-            </div>
-            <div>
-                <label for="item">ITEM PLACEHOLDER:</label>
-                <input type="text" value="THIS DOES NOTHING"id="item1" class="textInput">
-            </div>
-            <div class="div_button">
-                <button class="btn" id="submitButton">Submit</button>
-            </div>
-            <div>
-                <button>Reset</button>
-            </div>
-        
+        <div class="search-container">
+            <label> Search Member:</label>
+            <input type="text" id="searchInput" placeholder="Search for a member...">
+            <div id="resultsDropdown" class="dropdown-content"></div>
+        </div>
+        <div>
+            <label for="MemberId">Member ID:</label>
+            <input type="text" id="MemberId" class="textInput" disabled>
+            <span class="div_span" id="memberIdSpan"></span>
+        </div>
+        <div>
+            <label for="paymethod">Payment Method:</label>
+            <select name="paymethod" id="paymethod">
+                <option value="">- Choose -</option>
+                <option value="Cash">Cash</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">DebitCard</option>
+                <option value="Online Transfer">OnlineTransfer</option>
+            </select>
+            <span class="div_span" id="paymentMethodSpan"></span>
+        </div>
+        <div>
+            <label for="item">ITEM PLACEHOLDER:</label>
+            <input type="text" value="THIS DOES NOTHING" id="item1" class="textInput">
+        </div>
+        <div class="div_button">
+            <button class="btn" id="submitButton">Submit</button>
+        </div>
+        <div>
+            <button>Reset</button>
+        </div>
+
     </div>
-    
+
 </body>
+
 </html>

@@ -1,0 +1,10 @@
+.dropdown-content {
+    background-color: aliceblue;
+    display: inline-block;
+    position: absolute;
+    max-height: 150px; /* 5 records * 30px each */
+    overflow-y: auto;
+    width: 50%;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
