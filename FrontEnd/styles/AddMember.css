@@ -126,6 +126,11 @@ select {
 	cursor:pointer;
 	font-size: 1em;
 	font-family: 'Open Sans', sans-serif;
+	
+ }
+ select:focus
+ {
+	background: #e74c3c;
  }
  select::-ms-expand {
 	display: none;
