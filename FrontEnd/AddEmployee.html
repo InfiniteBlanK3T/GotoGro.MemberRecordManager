@@ -1,1 +1,82 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AddMember</title>
+
+    <link rel="stylesheet" href="./styles/AddMember.css">
+    <!-- <script src="RegEx.js" defer></script> -->
+    <!-- <script src="AddMember.js" defer></script> -->
+    <script src="" type="module" defer></script>
+    
+
+</head>
+
+<body>
+
+    <div class="box">
+        <!-- <form action=""> -->
+            <h3 class="formHeading">Add New Employee</h3>
+
+            <div class="div_input">
+                <input type="text" id="aFirstName" class="textInput" required="">
+                <label for="aFirstName">First Name:</label>
+                <span class="div_span" id="firstNameSpan"></span>
+            </div>
+
+            <div class="div_input">
+                <input type="text" id="aLastName" class="textInput" required="">
+                <label for="aLastName">Last Name:</label>
+                <span class="div_span" id="lastNameSpan"></span>
+            </div>
+
+            <div class="div_input">
+                <input type="text" id="aEmail" class="textInput" required="">
+                <label for="aEmail">Email:</label>
+                <span class="div_span" id="emailSpan"></span>
+            </div>
+
+            <div class="div_input">
+                <input type="text" id="aPhone" class="textInput" required="">
+                <label for="aPhone">Phone:</label>
+                <span class="div_span" id="phoneSpan"></span>
+            </div>
+            <div class="roleLabel">
+
+                <label for="selectRole">Role:</label>
+            </div>
+            
+            
+
+            <div class="select">
+                <select id="selectRole">
+                    <option value="storeWorker">Store Worker</option>
+                    <option value="courier">Courier</option>
+                    <option value="manager">Manager</option>
+                </select>
+                
+                
+            </div>
+            <span class="div_span" id="addressSpan"></span>
+
+            <div class="div_button">
+                <button class="btn" id="submitButton">Submit</button>
+            </div>
+
+            <div class="div_button">
+                <button class="btn">Reset</button>
+            </div>
+
+
+        <!-- </form> -->
+        
+    </div>
+
+
+</body>
+
+</html>
