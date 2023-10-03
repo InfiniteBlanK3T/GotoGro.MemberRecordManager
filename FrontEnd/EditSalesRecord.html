@@ -6,27 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AddSalesRecord</title>
 
+    <link rel="stylesheet" href="./styles/AddMember.css">
     <link rel="stylesheet" href="./styles/AddSalesRecord.css">
     <!-- <script src="RegExSales.js" defer></script> -->
     <!-- <script src="AddSalesRecord.js" type="module" defer></script> -->
 </head>
 
 <body>
-    <h1>Edit Sales Record</h1>
-    <div>
-        <div class="search-container">
-            <label> Search for Sale Id:</label>
-            <input type="text" id="searchInput" placeholder="Search for Sale ID.">
-            <button class="btn" id="searchSaleId">Search</button>
-            <!-- <div id="resultsDropdown" class="dropdown-content"></div> -->
+    
+    <div class="box">
+        <h3 class="formHeading">Edit Sales Record</h3>
+        <!-- <div class="search-container"> -->
+        <div class="div_input">
+            
+            <input class="textInput" type="text" id="searchSalesId" required="">
+            <label> Search Sales ID:</label>
+            <div class="div_button">
+                <button class="btn" id="searchButton">Search</button>
+            </div>
+            
         </div>
-        <div>
+        <div class="div_input">
+            
+            <input class="textInput" type="text" id="MemberId" class="textInput" required="">
             <label for="MemberId">Member ID:</label>
-            <input type="text" id="MemberId" class="textInput">
             <span class="div_span" id="memberIdSpan"></span>
         </div>
-        <div>
+        
+        <div class="div_input">
+            
+            <input class="textInput" type="text" value="" id="item" required="">
+            <label for="item">ITEM PLACEHOLDER:</label>
+        </div>
+        <div class="roleLabel">
             <label for="paymethod">Payment Method:</label>
+        </div>
+        
+        <div class="select">
+            
             <select name="paymethod" id="paymethod">
                 <option value="">- Choose -</option>
                 <option value="Cash">Cash</option>
@@ -36,15 +53,11 @@
             </select>
             <span class="div_span" id="paymentMethodSpan"></span>
         </div>
-        <div>
-            <label for="item">ITEM PLACEHOLDER:</label>
-            <input type="text" value="THIS DOES NOTHING" id="item1" class="textInput">
-        </div>
         <div class="div_button">
             <button class="btn" id="submitButton">Submit</button>
         </div>
-        <div>
-            <button>Reset</button>
+        <div class="div_button">
+            <button class="btn">Reset</button>
         </div>
 
     </div>
