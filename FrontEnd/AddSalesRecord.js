@@ -14,7 +14,10 @@ const paymethodSelect = document.getElementById("paymethod");
 const MemberIdSpan = document.getElementById("memberIdSpan");
 const paymethodSpan = document.getElementById("paymentMethodSpan");
 
+//buttons
+
 const submitButton = document.getElementById("submitButton");
+const resetButton = document.getElementById("resetButton");
 
 // declaring class objects
 const salesRecord = new GetSalesRecordData();
@@ -94,6 +97,13 @@ const onSubmitButtonClickHandler = () => {
 };
 
 submitButton.onclick = onSubmitButtonClickHandler;
+
+const onResetButtonClickHandler = () => {
+	console.log("reset button clicked");
+	window.location.reload();
+}
+
+resetButton.onclick = onResetButtonClickHandler;
 
 // Debounce to reduce number of API calls
 function debounce(func, delay) {

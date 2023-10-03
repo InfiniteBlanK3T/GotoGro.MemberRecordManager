@@ -26,6 +26,7 @@ const addressSpan = document.getElementById("addressSpan");
 
 //buttons
 const submitButton = document.getElementById("submitButton");
+const resetButton = document.getElementById("resetButton");
 
 // declaring class instances
 
@@ -162,3 +163,10 @@ const onSubmitButtonClickHandler = () => {
 	newMember.consoleMemberDetails();
 };
 submitButton.onclick = onSubmitButtonClickHandler;
+
+const onResetButtonClickHandler = () => {
+	console.log("reset button clicked");
+	window.location.reload();
+}
+
+resetButton.onclick = onResetButtonClickHandler;
