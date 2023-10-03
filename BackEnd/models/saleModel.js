@@ -59,8 +59,8 @@ const Sales = sequelize.define(
 					msg: "PaymentMethod is required",
 				},
 				isIn: {
-					args: [["Cash", "Credit Card", "Debit Card", "Online Transfer"]],
-					msg: "PaymentMethod should be one of 'Cash', 'Credit Card', 'Debit Card', or 'Online Transfer'",
+					args: [["cash", "credit", "eftpos", "voucher", "online"]],
+					msg: "PaymentMethod should be one of 'cash', 'credit', 'eftpos', 'voucher',  or 'online'",
 				},
 			},
 		},

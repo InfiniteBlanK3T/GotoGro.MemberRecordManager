@@ -33,10 +33,12 @@ export class FormValidation
     {
         if (this.input == "") 
         {
+            console.log("FormValidation: ", this.input, " is empty");
             return false;
         } 
         else if (!this.input.match(this.regEx)) 
         {
+            console.log("FormValidation: ", this.input, " does not match");
             return false;
         } 
         else 
