@@ -3,13 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Download CSV Reports</title>
 </head>
 <body>
 
     <div class="box">
+        <h3>Download CSV Reports</h3>
         <div>
             <div class="div_button">
+                <label for="">Member download: </label>
+                <select name="memberSelectFilter" id="memberSelectFilter">
+                    <option value="all">All</option>
+                    <option value="name">name</option>
+                    <option value="suburb">suburb</option>
+                    <option value="email">email</option>
+                </select>
+                <input type="text" id="memberInputFilter">
+                <button class="button" id="downloadMembers">Download</button>
+                
+            </div>
+        </div>
+        <div>
+            <div class="div_button">
+                <label for="">Sales download: </label>
+                <select name="salesSelectFilter" id="salesSelectFilter">
+                    <option value="all">All</option>
+                    <option value="name">name</option>
+                    <option value="date">date</option>
+                </select>
+                <input type="text" id="salesInputFilter">
+                <button class="button" id="downloadMembers">Download</button>
+                
+            </div>
+        </div>
+        <div>
+            <div class="div_button">
+                <label for="">Feedback download: </label>
+                <select name="feedbackSelectFilter" id="feedbackSelectFilter">
+                    <option value="all">All</option>
+                    <option value="name">name</option>
+                </select>
+                <input type="text" id="feedbackInputFilter">
                 <button class="button" id="downloadMembers">Download</button>
                 
             </div>
