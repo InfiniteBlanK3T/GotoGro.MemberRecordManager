@@ -11,6 +11,7 @@ const paymethodSelect = document.getElementById("paymethod");
 
 //spans
 
+const searchMemberSpan = document.getElementById("searchMemberSpan");
 const MemberIdSpan = document.getElementById("memberIdSpan");
 const paymethodSpan = document.getElementById("paymentMethodSpan");
 
@@ -135,7 +136,8 @@ const debouncedSearchMembers = debounce(async function () {
 		dropdown.innerHTML = "";
 
 		if (members.length === 0) {
-			dropdown.innerHTML = "<div>No results found</div>";
+			searchMemberSpan.innerHTML = "No results found.";
+			// dropdown.innerHTML = "<div>No results found</div>";
 		} else {
 			members.slice(0, 5).forEach((member) => {
 				const div = document.createElement("div");
