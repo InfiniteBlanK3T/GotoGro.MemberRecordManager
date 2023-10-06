@@ -34,7 +34,7 @@ const Feedback = sequelize.define(
 	},
 	{
 		timestamps: false,
-		tableName: "Feedbacks",
+		tableName: "Feedbacks", //might need to change this to Feedback as currently the DB create script makes the table with the feedback name 
 	}
 );
 
