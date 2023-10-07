@@ -8,8 +8,31 @@ const downloadFeedbackBtn = document.getElementById("downloadFeedbackBtn");
 
 //button handlers
 
+
+const getAllMembers = async function() 
+{
+    try 
+    {
+		const response = await fetch(
+			`http://localhost:5732/api/member/`
+		);
+		const members = await response.json();
+        console.log(members);
+
+        
+    }
+    catch (error)
+    {
+        console.error("Error fetching search results:", error);
+    }
+    
+}
+
+
 const onDownloadMembersBtnHandler = () => {
     console.log("Download Members Button Clicked");
+    getAllMembers();
+   
 
 }
 
