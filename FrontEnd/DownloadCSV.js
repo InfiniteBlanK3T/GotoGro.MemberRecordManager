@@ -19,7 +19,8 @@ const salesFileName = "Sales"
 const feedbackFileName = "Feedback"
 
 
-//TODO filename change
+// function to download csv
+
 const startCSVDownload = (aCsv, aFilename) =>
 {
     const blob = new Blob([aCsv], {type: "octet-stream"});
@@ -35,6 +36,7 @@ const startCSVDownload = (aCsv, aFilename) =>
     a.remove();
 }
 
+// generic function to handle members, sales and feedback fetching for all records
 
 const downloadAllRecords = async function(aURL, aFilename) 
 {
