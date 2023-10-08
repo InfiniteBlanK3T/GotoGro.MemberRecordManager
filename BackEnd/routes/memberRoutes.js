@@ -10,7 +10,7 @@ const {
 	searchMembers,
 } = require("../controllers/memberController");
 
-router.route("/").get(getAllMembers).post(createMember)
+router.route("/").get(getAllMembers).post(createMember);
 
 router.route("/search").get(searchMembers);
 

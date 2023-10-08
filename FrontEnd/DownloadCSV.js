@@ -6,49 +6,46 @@ const downloadMembersBtn = document.getElementById("downloadMembersBtn");
 const downloadSalesBtn = document.getElementById("downloadSalesBtn");
 const downloadFeedbackBtn = document.getElementById("downloadFeedbackBtn");
 
-// const blob = new Blob({type: 'application/csv'});
-// const url = URL.createObjectURL(blob);
+// fetch consts
 
-//button handlers
+const fetchAllMembersURL = `http://localhost:5732/api/csv`;
+const fetchAllSalesURL = `http://localhost:5732/api/csv/csvSales`;
+const fetchAllFeedbackURL = `http://localhost:5732/api/csv/csvFeedback`;
 
-const startCSVDownload = (csv) =>
+//file names consts
+
+const membersFileName = "Members"
+const salesFileName = "Sales"
+const feedbackFileName = "Feedback"
+
+
+//TODO filename change
+const startCSVDownload = (aCsv, aFilename) =>
 {
-    
-    
-    const blob = new Blob([csv], {type: "octet-stream"});
-        const href = URL.createObjectURL(blob)
-        const a = Object.assign(document.createElement("a"), {
+    const blob = new Blob([aCsv], {type: "octet-stream"});
+    const href = URL.createObjectURL(blob)
+    const a = Object.assign(document.createElement("a"), {
         href,
-        style: "display:none",
-        download: "members.csv"
-        });
-        document.body.appendChild(a);
-        a.click();
-        URL.revokeObjectURL(href);
-        a.remove();
-
-
+        style: "display:non",
+        download: `${aFilename}.csv`
+    });
+    document.body.appendChild(a);
+    a.click();
+    URL.revokeObjectURL(href);
+    a.remove();
 }
 
 
-const getAllMembers = async function() 
+const downloadAllRecords = async function(aURL, aFilename) 
 {
     try 
     {
 		const response = await fetch(
-			`http://localhost:5732/api/csv`
+			aURL
 		);
-		// const members = await response.json();
-        const members = await response.text();
-        // members.toString();
-        console.log(members);
-
-        
-
-        startCSVDownload(members);
-
-        
-
+        const data = await response.text();
+        console.log(data);
+        startCSVDownload(data, aFilename);
     }
     catch (error)
     {
@@ -57,23 +54,23 @@ const getAllMembers = async function()
     
 }
 
+//button handlers
 
 const onDownloadMembersBtnHandler = () => {
     console.log("Download Members Button Clicked");
-    getAllMembers();
+    downloadAllRecords(fetchAllMembersURL, membersFileName);
    
-
 }
 
 downloadMembersBtn.onclick = onDownloadMembersBtnHandler;
 
 const onDownloadSalesBtnHandler = () => {
     console.log("Download Sales Button Clicked");
+    downloadAllRecords(fetchAllSalesURL, salesFileName);
 
 }
 
 downloadSalesBtn.onclick = onDownloadSalesBtnHandler;
-
 const onDownloadFeedbackBtnHandler = () => {
     console.log("Download Feedback Button Clicked");
 
