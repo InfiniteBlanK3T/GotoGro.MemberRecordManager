@@ -140,6 +140,7 @@ const debouncedSearchMembers = debounce(async function () {
 			// dropdown.innerHTML = "<div>No results found</div>";
 		} else {
 			searchMemberSpan.innerHTML = "";
+			
 			members.slice(0, 5).forEach((member) => {
 				const div = document.createElement("div");
 				div.innerHTML = `${member.MemberId}-${member.FirstName} ${member.LastName}`;
