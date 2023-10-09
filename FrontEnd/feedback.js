@@ -96,8 +96,8 @@ const onSubmitButtonClickHandler = () => {
 	if (AreInputsAllValid) {
 
         const sendFeedbackObject = {
-            memberId: feedbackObject.memberId,
-            feedbackComments: `Q1: ${feedbackObject.q1} Q2: ${feedbackObject.q2} Q3: ${feedbackObject.q3}`
+            MemberId: feedbackObject.memberId,
+            Comment: `Q1: ${feedbackObject.q1} Q2: ${feedbackObject.q2} Q3: ${feedbackObject.q3}`
         }
 		// const sendFeedbackObject = feedbackObject;
         console.log("sendFeedbackObject", sendFeedbackObject);

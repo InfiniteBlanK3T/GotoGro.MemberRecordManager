@@ -43,23 +43,14 @@ const updateFeedback = asyncHandler(async (req, res) => {
 //@access public
 //@ route POST /api/feedback/
 const createFeedback = asyncHandler(async (req, res) => {
-  const { FeedbackId, MemberId, Comment } = req.body;
+  let {MemberId, Comment } = req.body;
 
-  //Generating FeedbackID
-	let feedback_id = generateFeedbackId();
-	let existingFeedbackId = await Feedback.findOne({ where: { feedback_id } });
-
-	// Ensure the generated FeedbackId is unique
-	while (existingFeedbackId) {
-		feedback_id = generateFeedbackId();
-		existingMember = await Member.findOne({ where: { feedback_id } });
-	}
-
-  FeedbackId = feedback_id;
+ 
+  // FeedbackId
 
   try {
     const feedback = await Feedback.create({
-      FeedbackId,
+      
       MemberId,
       Comment,
     });
