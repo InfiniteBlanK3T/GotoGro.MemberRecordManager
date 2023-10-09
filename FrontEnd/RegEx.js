@@ -15,3 +15,4 @@ export const streetNoRegEx = /[A-Za-z0-9._\s]{1,15}/;
 export const suburbRegEx = /[A-za-z\-\s]{3,30}/;
 export const postcodeRegEx = /[0-9]{4}/;
 
+export const feedbackRegEx = /^[a-zA-Z\s]{5,66}/;

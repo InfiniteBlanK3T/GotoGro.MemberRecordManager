@@ -51,6 +51,12 @@
 
 3. Then you could run our BackEnd locally with -> `npm run dev`
 
+# 4. CSV dependency 
+> [!Important]
+> Remember to install dependencies (node_modules) INSIDE ```/BackEnd/.. ```
+
+1. `MUST` be in the `/BackEnd`
+2. Run `npm install json2csv`
 
 
 ## Misc
