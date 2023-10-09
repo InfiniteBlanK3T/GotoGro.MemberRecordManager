@@ -45,8 +45,6 @@ const updateFeedback = asyncHandler(async (req, res) => {
 const createFeedback = asyncHandler(async (req, res) => {
   let {MemberId, Comment } = req.body;
 
- 
-  // FeedbackId
 
   try {
     const feedback = await Feedback.create({

@@ -75,6 +75,7 @@ const onDownloadSalesBtnHandler = () => {
 downloadSalesBtn.onclick = onDownloadSalesBtnHandler;
 const onDownloadFeedbackBtnHandler = () => {
     console.log("Download Feedback Button Clicked");
+    downloadAllRecords(fetchAllFeedbackURL,feedbackFileName);
 
 }
 
