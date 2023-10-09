@@ -1,6 +1,11 @@
 const asyncHandler = require("express-async-handler");
 const Feedback = require("../models/feedbackModel");
 const Sequelize = require("sequelize");
+const crypto = require("crypto");
+
+function generateFeedbackId() {
+	return crypto.randomBytes(5).toString("hex");
+}
 
 //---------------API---------------
 //@access public
@@ -39,6 +44,18 @@ const updateFeedback = asyncHandler(async (req, res) => {
 //@ route POST /api/feedback/
 const createFeedback = asyncHandler(async (req, res) => {
   const { FeedbackId, MemberId, Comment } = req.body;
+
+  //Generating FeedbackID
+	let feedback_id = generateFeedbackId();
+	let existingFeedbackId = await Feedback.findOne({ where: { feedback_id } });
+
+	// Ensure the generated FeedbackId is unique
+	while (existingFeedbackId) {
+		feedback_id = generateFeedbackId();
+		existingMember = await Member.findOne({ where: { feedback_id } });
+	}
+
+  FeedbackId = feedback_id;
 
   try {
     const feedback = await Feedback.create({

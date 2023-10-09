@@ -24,8 +24,6 @@ app.use("/api/sale", require("./routes/saleRoutes"));
 app.use("/api/item", require("./routes/itemRoutes"));
 app.use("/api/permission", require("./routes/permissionRoutes"));
 app.use("/api/feedback", require("./routes/feedbackRoutes"));
-
-
 app.use("/api/csv", require("./routes/csvRoutes"));
 
 connectDatabase()
