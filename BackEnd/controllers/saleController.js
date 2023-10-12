@@ -137,10 +137,32 @@ const deleteSale = asyncHandler(async (req, res) => {
 	res.status(200).json(sale);
 });
 
+const searchSales = async (req, res) => {
+	try 
+	{
+		const searchTerm = req.query.q;
+
+		const sales = await Sales.findAll({
+			where: {
+				[Op.or]: [
+					{ SaleId: { [Op.like]: "%" + searchTerm + "%" } },
+					
+				],
+			},
+		});
+		res.status(200).json(sales);
+	}
+	catch (error)
+	{
+		res.status(500).json({ message: "Server Error", error });
+	}
+}
+
 module.exports = {
 	getAllSales,
 	getSale,
 	updateSale,
 	createSale,
 	deleteSale,
+	searchSales
 };

@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="./styles/AddSalesRecord.css">
     <link rel="stylesheet" href="./styles/Nav.css">
     <!-- <script src="RegExSales.js" defer></script> -->
-    <!-- <script src="AddSalesRecord.js" type="module" defer></script> -->
+    <script src="EditSalesRecord.js" type="module" defer></script>
 </head>
 
 <body>
     
-    <nav class="navbar">
+    <nav class="navbar"> 
         <li><a href="AddMember.html">Add Member</a></li>
         <li><a href="">Edit Member</a></li>
         <li><a href="AddSalesRecord.html">Add Sales</a></li>
@@ -31,9 +31,9 @@
             
             <input class="textInput" type="text" id="searchSalesId" required="">
             <label> Search Sales ID:</label>
-            <div class="div_button">
-                <button class="btn" id="searchButton">Search</button>
-            </div>
+            <div id="resultsDropdown" class="dropdown-content"></div>
+            <span class="div_span" id="searchMemberSpan"></span>
+            
             
         </div>
         <div class="div_input">
@@ -68,7 +68,7 @@
         <div class="div_button">
             <button class="btn" id="submitButton">Submit</button>
         </div>
-        <div class="div_button">
+        <div class="div_button" id="resetButton">
             <button class="btn">Reset</button>
         </div>
 
