@@ -133,6 +133,8 @@ const debouncedSearchMembers = debounce(async function () {
 		);
 		const sales = await response.json();
 
+		console.log(sales);
+
 		dropdown.innerHTML = "";
 
 		if (sales.length === 0) {
@@ -140,6 +142,8 @@ const debouncedSearchMembers = debounce(async function () {
 			// dropdown.innerHTML = "<div>No results found</div>";
 		} else {
 			searchMemberSpan.innerHTML = "";
+
+			
 			
 			sales.slice(0, 5).forEach((sale) => {
 				const div = document.createElement("div");
@@ -147,6 +151,7 @@ const debouncedSearchMembers = debounce(async function () {
 				div.onclick = function () {
 					document.getElementById("MemberId").value = sale.MemberId; // Fill the MemberId input
 					input.value = sale.SaleId;
+					paymethodSelect.value = sale.PaymentMethod;
 					dropdown.style.display = "none"; // Hide dropdown after selection
 				};
 				dropdown.appendChild(div);
@@ -161,6 +166,7 @@ const debouncedSearchMembers = debounce(async function () {
 
 //Search Member
 function searchSales() {
+	console.log("searchSales");
 	debouncedSearchMembers();
 }
 document.getElementById("searchSalesId").addEventListener("keyup", searchSales);

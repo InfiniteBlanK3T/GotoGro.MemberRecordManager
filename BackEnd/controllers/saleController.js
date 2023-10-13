@@ -3,6 +3,7 @@ const Sales = require("../models/saleModel");
 const Members = require("../models/memberModel");
 const Sequelize = require("sequelize");
 const crypto = require("crypto");
+const { Op } = require("sequelize");
 
 function generateSaleId() {
 	return crypto.randomBytes(5).toString("hex");

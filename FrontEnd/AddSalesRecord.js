@@ -133,6 +133,8 @@ const debouncedSearchMembers = debounce(async function () {
 		);
 		const members = await response.json();
 
+		console.log(members);
+
 		dropdown.innerHTML = "";
 
 		if (members.length === 0) {
