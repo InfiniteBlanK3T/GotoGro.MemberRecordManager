@@ -1,10 +1,10 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const { sequelize } = require("../config/dbConnection");
 
-const Permissions = sequelize.define(
-	"Permission",
+const Role = sequelize.define(
+	"Roles",
 	{
-		PermissionId: {
+		RoleId: {
 			type: DataTypes.STRING(10),
 			allowNull: false,
 			primaryKey: true,
@@ -13,20 +13,16 @@ const Permissions = sequelize.define(
 			type: DataTypes.STRING(50),
 			allowNull: false,
 			validate: {
-				min: {
-					args: 3,
-					msg: "Permission Name must be more than 3 characters",
-				},
 				notEmpty: {
-					msg: "Permission Name should not be empty",
+					msg: "Role's Name cannot be empty",
 				},
 			},
 		},
 	},
 	{
 		timestamps: false,
-		tableName: "Permissions",
+		tableName: "Roles",
 	}
 );
 
-module.exports = Permissions;
+module.exports = Role;

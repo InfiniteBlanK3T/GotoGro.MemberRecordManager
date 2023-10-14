@@ -20,20 +20,20 @@ const connectDatabase = async () => {
 	while (retries < MAX_RETRIES) {
 		try {
 			await sequelize.authenticate();
-			console.log("Database connection has been established successfully.");
+			console.log(
+				`\x1b[32mDatabase Connection has been established successfully!\x1b[0m`
+			);
 			return;
 		} catch (err) {
 			retries++;
 			console.error(
-				`Unable to connect to the database. Attempt ${retries} of ${MAX_RETRIES}.`,
-				err
+				`\x1b[31mUnable to connect to the Database. Attempt ${retries} of ${MAX_RETRIES}.\x1b[0m`
 			);
 
 			if (retries < MAX_RETRIES) {
 				await new Promise((res) => setTimeout(res, RETRY_DELAY));
 			} else {
-				console.error("Max retries reached. Exiting...");
-				throw err;
+				console.error(`\x1b[33mMax retries reached. Exiting...\x1b[0m`);
 			}
 		}
 	}

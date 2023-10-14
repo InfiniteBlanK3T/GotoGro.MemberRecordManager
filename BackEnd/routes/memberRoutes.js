@@ -10,10 +10,23 @@ const {
 	searchMembers,
 } = require("../controllers/memberController");
 
-router.route("/").get(getAllMembers).post(createMember);
+const {
+	validateToken,
+	requirePermission,
+} = require("../middleware/validateToken");
 
-router.route("/search").get(searchMembers);
+router.use(validateToken);
 
-router.route("/:id").get(getMember).put(updateMember).delete(deleteMember);
+router.post("/", createMember);
+
+router.get("/search", requirePermission("EditMember"), searchMembers);
+
+router.get("/", requirePermission("EditMember"), getAllMembers);
+
+router
+	.route("/:id")
+	.get(requirePermission("EditMember"), getMember)
+	.put(requirePermission("EditMember"), updateMember)
+	.delete(requirePermission("EditMember"), deleteMember);
 
 module.exports = router;

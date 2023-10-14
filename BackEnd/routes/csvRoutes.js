@@ -1,17 +1,25 @@
-
 const express = require("express");
 const router = express.Router();
 
 const {
-    downloadMembersCSV,
-    downloadSalesCSV,
-    downloadFeedbackCSV
-} =  require("../controllers/csvController");
+	downloadMembersCSV,
+	downloadSalesCSV,
+	downloadFeedbackCSV,
+} = require("../controllers/csvController");
+const {
+	requirePermission,
+	validateToken,
+} = require("../middleware/validateToken");
 
-router.route("/").get(downloadMembersCSV);
+router.use(validateToken);
+router.get("/", requirePermission("DownloadCSV"), downloadMembersCSV);
 
-router.route("/csvSales").get(downloadSalesCSV);
+router.get("/csvSales", requirePermission("DownloadCSV"), downloadSalesCSV);
 
-router.route("/csvFeedback").get(downloadFeedbackCSV);
+router.get(
+	"/csvFeedback",
+	requirePermission("DownloadCSV"),
+	downloadFeedbackCSV
+);
 
 module.exports = router;

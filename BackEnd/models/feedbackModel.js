@@ -19,22 +19,18 @@ const Feedback = sequelize.define(
 			},
 		},
 		Comment: {
-			type: DataTypes.STRING(200),
+			type: DataTypes.TEXT,
 			allowNull: false,
 			validate: {
 				notEmpty: {
 					msg: "Comment should not be empty.",
-				},
-				len: {
-					args: [5, 200],
-					msg: "Comment should be between 5 and 200 characters.",
 				},
 			},
 		},
 	},
 	{
 		timestamps: false,
-		tableName: "Feedbacks", //might need to change this to Feedback as currently the DB create script makes the table with the feedback name 
+		tableName: "Feedbacks",
 	}
 );
 
