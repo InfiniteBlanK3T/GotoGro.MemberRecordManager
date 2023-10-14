@@ -201,13 +201,31 @@ module.exports = {
 				PermissionId: "6",
 			},
 		]);
+		//Loading into User Table
+		await queryInterface.bulkInsert("Users", [
+			{
+				Username: "BW0000",
+				MemberId: "6f7g8h9i0j",
+				Password:
+					"$2b$10$b9oD6m25AIfmLhQlXQzguex4vrY5H9vlAYasY6EP2/8IU53keDf8O",
+				RoleId: "1",
+			},
+			{
+				Username: "HT0000",
+				MemberId: "j6k7l8m9n0",
+				Password:
+					"$2b$10$/L.JBVXzfPK.FQxDR4JxlOJqWybQZm1nnY6u1aUBWOTrp9bEjFhwy",
+				RoleId: "2",
+			},
+		]);
 	},
 
 	async down(queryInterface, Sequelize) {
+		await queryInterface.bulkDelete("Users", null, {});
+		await queryInterface.bulkDelete("RolePermissionMapping", null, {});
 		await queryInterface.bulkDelete("Members", null, {});
 		await queryInterface.bulkDelete("Roles", null, {});
 		await queryInterface.bulkDelete("Permissions", null, {});
-		await queryInterface.bulkDelete("RolePermissionMapping", null, {});
 		await queryInterface.bulkDelete("Sales", null, {});
 	},
 };

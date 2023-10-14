@@ -19,9 +19,7 @@ router.use(validateToken);
 router.get("/", requirePermission("EditSales"), getAllSales);
 router.post("/", requirePermission("AddSales"), createSale);
 
-router
-	.route("/search")
-	.get("/search", requirePermission("EditSales"), searchSales);
+router.get("/search", requirePermission("EditSales"), searchSales);
 
 router
 	.route("/:id")
