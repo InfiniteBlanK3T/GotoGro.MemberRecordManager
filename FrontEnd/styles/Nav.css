@@ -40,4 +40,7 @@
     background-color: #f44336;
     color: white;
     padding: 14px 16px;
+    margin-top: -14px;
+    position: absolute;
+    right: 1%;
 }
