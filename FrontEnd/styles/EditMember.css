@@ -1,0 +1,73 @@
+/* EditMember.css */
+
+body {
+    background-color: black;
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* .navbar {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+} */
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 25px auto;
+    font-size: 18px;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.89);
+}
+
+th, td {
+    border-bottom: 1px solid #555;
+    padding: 8px;
+    text-align: center;
+    color: white;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+tr:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Action buttons */
+button {
+    background-color: slateblue;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition-duration: 0.5s;
+}
+
+button:hover {
+    background-color: rgb(84, 133, 36);
+    color: black;
+}
+
+button:focus {
+    outline-color: #e74c3c;
+    outline-style: solid;
+    box-shadow: 0 0 0 4px red;
+    transition: 0.3s;
+}
