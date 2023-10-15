@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
-    
+
     <!-- <link rel="stylesheet" href="./styles/AddMember.css">
     <link rel="stylesheet" href="./styles/AddSalesRecord.css"> -->
     <link rel="stylesheet" href="./styles/Nav.css">
-    
+
     <script src="feedback.js" type="module" defer></script>
+    <script src="session.js" defer></script>
 </head>
 
 <body>
@@ -22,14 +23,14 @@
         <a href="DownloadCSV.html">Generate CSV</a>
         <a href="AddEmployee.html">Add Employee</a>
     </nav>
-    
+
 
     <div class="box">
         <div>
             <h3 class="formHeading">Feedback</h3>
         </div>
         <div class="div_input">
-            
+
             <input class="textInput" type="text" id="searchInput" required="">
             <label> Search Member:</label>
             <div id="resultsDropdown" class="dropdown-content"></div>
@@ -37,18 +38,18 @@
         </div>
 
         <div class="div_input">
-            
+
             <input class="textInput" type="text" id="memberIdInput" class="textInput" required="">
             <label for="memberIdInput">Member ID:</label>
             <span class="div_span" id="memberIdSpan"></span>
         </div>
-       
+
         <label for="question_1">What type of products would you like more of?</label>
         <div class="div_textarea">
 
             <textarea name="" id="question_1" cols="30" rows="10"></textarea>
-            
-            
+
+
         </div>
         <span class="div_span" id="q1_span"></span>
 
@@ -56,8 +57,8 @@
         <div class="div_textarea">
 
             <textarea name="" id="question_2" cols="30" rows="10"></textarea>
-            
-            
+
+
         </div>
         <span class="div_span" id="q2_span"></span>
 
@@ -65,11 +66,11 @@
         <div class="div_textarea">
 
             <textarea name="" id="question_3" cols="30" rows="10"></textarea>
-            
-            
+
+
         </div>
         <span class="div_span" id="q3_span"></span>
-        
+
         <div class="div_button">
             <button class="btn" id="submitButton">Submit</button>
         </div>

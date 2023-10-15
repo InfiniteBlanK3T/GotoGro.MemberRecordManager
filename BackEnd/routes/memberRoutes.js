@@ -19,7 +19,7 @@ router.use(validateToken);
 
 router.post("/", createMember);
 
-router.get("/search", requirePermission("EditMember"), searchMembers);
+router.get("/search", requirePermission("AddMember"), searchMembers);
 
 router.get("/", requirePermission("EditMember"), getAllMembers);
 

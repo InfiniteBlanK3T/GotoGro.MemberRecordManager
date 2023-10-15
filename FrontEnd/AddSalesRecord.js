@@ -67,7 +67,7 @@ const onSubmitButtonClickHandler = () => {
 	setSalesRecord();
 	AreInputsAllValid = formValidationFunc();
 	if (AreInputsAllValid) {
-		//update later with form validation check
+		const accessToken = localStorage.getItem("accessToken");
 		const salesRecordObject = {
 			MemberId: salesRecord.getMemberId(),
 			PaymentMethod: salesRecord.getpaymethod(),
@@ -78,6 +78,7 @@ const onSubmitButtonClickHandler = () => {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${accessToken}`,
 			},
 			body: JSON.stringify(salesRecordObject),
 		})
@@ -102,7 +103,7 @@ submitButton.onclick = onSubmitButtonClickHandler;
 const onResetButtonClickHandler = () => {
 	console.log("reset button clicked");
 	window.location.reload();
-}
+};
 
 resetButton.onclick = onResetButtonClickHandler;
 
@@ -121,6 +122,7 @@ const debouncedSearchMembers = debounce(async function () {
 	const input = document.getElementById("searchInput");
 	const dropdown = document.getElementById("resultsDropdown");
 	const searchTerm = input.value;
+	const accessToken = localStorage.getItem("accessToken");
 
 	if (searchTerm.length < 1) {
 		dropdown.style.display = "none";
@@ -129,7 +131,12 @@ const debouncedSearchMembers = debounce(async function () {
 
 	try {
 		const response = await fetch(
-			`http://localhost:5732/api/member/search?q=${searchTerm}`
+			`http://localhost:5732/api/member/search?q=${searchTerm}`,
+			{
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
 		);
 		const members = await response.json();
 
@@ -139,13 +146,12 @@ const debouncedSearchMembers = debounce(async function () {
 
 		if (members.length === 0) {
 			searchMemberSpan.innerHTML = "No results found.";
-			// dropdown.innerHTML = "<div>No results found</div>";
 		} else {
 			searchMemberSpan.innerHTML = "";
-			
+
 			members.slice(0, 5).forEach((member) => {
 				const div = document.createElement("div");
-				div.innerHTML = `${member.MemberId}-${member.FirstName} ${member.LastName}`;
+				div.innerHTML = `${member.FirstName} ${member.LastName}`;
 				div.onclick = function () {
 					document.getElementById("MemberId").value = member.MemberId; // Fill the MemberId input
 					input.value = `${member.FirstName} ${member.LastName}`;
@@ -159,7 +165,8 @@ const debouncedSearchMembers = debounce(async function () {
 		dropdown.innerHTML = "<div>Error fetching results</div>";
 		console.error("Error fetching search results:", error);
 	}
-}, 300); // 300ms delay debounce
+}, 300);
+// 300ms delay debounce
 
 //Search Member
 function searchMembers() {

@@ -67,17 +67,17 @@ const onSubmitButtonClickHandler = () => {
 	setSalesRecord();
 	AreInputsAllValid = formValidationFunc();
 	if (AreInputsAllValid) {
-		//update later with form validation check
 		const salesRecordObject = {
 			MemberId: salesRecord.getMemberId(),
 			PaymentMethod: salesRecord.getpaymethod(),
 		};
-		console.log(salesRecordObject);
+		const accessToken = localStorage.getItem("accessToken");
 
 		fetch("http://localhost:5732/api/sale", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${accessToken}`,
 			},
 			body: JSON.stringify(salesRecordObject),
 		})
@@ -90,8 +90,6 @@ const onSubmitButtonClickHandler = () => {
 				alert("Error");
 				console.error("Error:", error);
 			});
-
-		console.log(salesRecordObject);
 	}
 
 	salesRecord.consoleSaleDetails();
@@ -102,7 +100,7 @@ submitButton.onclick = onSubmitButtonClickHandler;
 const onResetButtonClickHandler = () => {
 	console.log("reset button clicked");
 	window.location.reload();
-}
+};
 
 resetButton.onclick = onResetButtonClickHandler;
 
@@ -121,6 +119,7 @@ const debouncedSearchMembers = debounce(async function () {
 	const input = document.getElementById("searchSalesId");
 	const dropdown = document.getElementById("resultsDropdown");
 	const searchTerm = input.value;
+	const accessToken = localStorage.getItem("accessToken");
 
 	if (searchTerm.length < 1) {
 		dropdown.style.display = "none";
@@ -129,7 +128,12 @@ const debouncedSearchMembers = debounce(async function () {
 
 	try {
 		const response = await fetch(
-			`http://localhost:5732/api/sale/search?q=${searchTerm}`
+			`http://localhost:5732/api/sale/search?q=${searchTerm}`,
+			{
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
 		);
 		const sales = await response.json();
 
@@ -139,20 +143,17 @@ const debouncedSearchMembers = debounce(async function () {
 
 		if (sales.length === 0) {
 			searchMemberSpan.innerHTML = "No results found.";
-			// dropdown.innerHTML = "<div>No results found</div>";
 		} else {
 			searchMemberSpan.innerHTML = "";
 
-			
-			
 			sales.slice(0, 5).forEach((sale) => {
 				const div = document.createElement("div");
 				div.innerHTML = `${sale.SaleId}`;
 				div.onclick = function () {
-					document.getElementById("MemberId").value = sale.MemberId; // Fill the MemberId input
+					document.getElementById("MemberId").value = sale.MemberId;
 					input.value = sale.SaleId;
 					paymethodSelect.value = sale.PaymentMethod;
-					dropdown.style.display = "none"; // Hide dropdown after selection
+					dropdown.style.display = "none";
 				};
 				dropdown.appendChild(div);
 			});
@@ -162,7 +163,8 @@ const debouncedSearchMembers = debounce(async function () {
 		dropdown.innerHTML = "<div>Error fetching results</div>";
 		console.error("Error fetching search results:", error);
 	}
-}, 300); // 300ms delay debounce
+}, 300);
+// 300ms delay debounce
 
 //Search Member
 function searchSales() {

@@ -4,8 +4,6 @@ const Sequelize = require("sequelize");
 const crypto = require("crypto");
 const { Op } = require("sequelize");
 
-
-
 function generateMemberId() {
 	return crypto.randomBytes(5).toString("hex");
 }
@@ -22,7 +20,6 @@ const getAllMembers = asyncHandler(async (req, res) => {
 	const members = await Member.findAll();
 	res.status(200).json({ members });
 });
-
 
 //@access public
 //@ route GET /api/member/:id
@@ -173,5 +170,4 @@ module.exports = {
 	createMember,
 	deleteMember,
 	searchMembers,
-	
 };

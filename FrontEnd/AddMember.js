@@ -1,9 +1,13 @@
-
-//importing classes 
+//importing classes
 
 import { FormValidation } from "./FormValidation.js";
 import { GetMemberFormData } from "./GetMemberFormData.js";
-import { firstNameRegEx, lastNameRegEx, emailRegEx, phoneRegEx } from "./RegEx.js";
+import {
+	firstNameRegEx,
+	lastNameRegEx,
+	emailRegEx,
+	phoneRegEx,
+} from "./RegEx.js";
 
 // Declaring RegEx Constants
 
@@ -134,18 +138,20 @@ const onSubmitButtonClickHandler = () => {
 	console.log("Are All Inputs Valid: ", AreInputsAllValid);
 
 	if (AreInputsAllValid) {
+		const accessToken = localStorage.getItem("accessToken");
 		const memberDataObject = {
 			FirstName: newMember.getFirstName(),
 			LastName: newMember.getLastName(),
 			Email: newMember.getEmail(),
 			Phone: newMember.getPhone(),
-			FullAddress: newMember.getFullAddress()
+			FullAddress: newMember.getFullAddress(),
 		};
 		//BackEnd - fetch from API
 		fetch("http://localhost:5732/api/member", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${accessToken}`,
 			},
 			body: JSON.stringify(memberDataObject),
 		})
@@ -162,11 +168,12 @@ const onSubmitButtonClickHandler = () => {
 
 	newMember.consoleMemberDetails();
 };
+
 submitButton.onclick = onSubmitButtonClickHandler;
 
 const onResetButtonClickHandler = () => {
 	console.log("reset button clicked");
 	window.location.reload();
-}
+};
 
 resetButton.onclick = onResetButtonClickHandler;

@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download CSV Reports</title>
-    <script src="DownloadCSV.js" type="module" defer></script>
+    <link rel="stylesheet" href="./styles/DownloadCSV.css">
     <link rel="stylesheet" href="./styles/Nav.css">
-    
+    <script src="DownloadCSV.js" type="module" defer></script>
+    <script src="session.js" defer></script>
 </head>
 
 <body>
 
     <nav class="navbar">
-        <a href="AddMember.html">Add Member</a>
-        <a href="">Edit Member</a>
-        <a href="AddSalesRecord.html">Add Sales</a>
-        <a href="EditSalesRecord.html">Edit Sales</a>
-        <a href="DownloadCSV.html">Generate CSV</a>
-        <a href="AddEmployee.html">Add Employee</a>
+
     </nav>
 
     <div class="box">
@@ -33,7 +30,7 @@
                 </select>
                 <input type="text" id="memberInputFilter">
                 <button class="button" id="downloadMembersBtn">Download</button>
-                
+
             </div>
         </div>
         <div>
@@ -46,7 +43,7 @@
                 </select>
                 <input type="text" id="salesInputFilter">
                 <button class="button" id="downloadSalesBtn">Download</button>
-                
+
             </div>
         </div>
         <div>
@@ -58,11 +55,12 @@
                 </select>
                 <input type="text" id="feedbackInputFilter">
                 <button class="button" id="downloadFeedbackBtn">Download</button>
-                
+
             </div>
         </div>
 
     </div>
-    
+
 </body>
+
 </html>

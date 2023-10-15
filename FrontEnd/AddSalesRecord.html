@@ -5,52 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AddSalesRecord</title>
-    
+
     <link rel="stylesheet" href="./styles/AddMember.css">
     <link rel="stylesheet" href="./styles/AddSalesRecord.css">
     <link rel="stylesheet" href="./styles/Nav.css">
-    
+
     <script src="AddSalesRecord.js" type="module" defer></script>
+    <script src="session.js" defer></script>
 </head>
 
 <body>
     <nav class="navbar">
-        <li><a href="AddMember.html">Add Member</a></li>
+        <!-- <li><a href="AddMember.html">Add Member</a></li>
         <li><a href="">Edit Member</a></li>
         <li><a href="AddSalesRecord.html">Add Sales</a></li>
         <li><a href="EditSalesRecord.html">Edit Sales</a></li>
         <li><a href="DownloadCSV.html">Generate CSV</a></li>
-        <li><a href="AddEmployee.html">Add Employee</a></li>
+        <li><a href="AddEmployee.html">Add Employee</a></li> -->
     </nav>
 
     <div class="box">
         <h3 class="formHeading">Add Sales Record</h3>
         <!-- <div class="search-container"> -->
         <div class="div_input">
-            
+
             <input class="textInput" type="text" id="searchInput" required="">
             <label> Search Member:</label>
             <div id="resultsDropdown" class="dropdown-content"></div>
             <span class="div_span" id="searchMemberSpan"></span>
         </div>
         <div class="div_input">
-            
+
             <input class="textInput" type="text" id="MemberId" class="textInput" required="">
             <label for="MemberId">Member ID:</label>
             <span class="div_span" id="memberIdSpan"></span>
         </div>
-        
+
         <div class="div_input">
-            
+
             <input class="textInput" type="text" value="" id="item" required="">
             <label for="item">ITEM PLACEHOLDER:</label>
         </div>
         <div class="roleLabel">
             <label for="paymethod">Payment Method:</label>
         </div>
-        
+
         <div class="select">
-            
+
             <select name="paymethod" id="paymethod">
                 <option value="">- Choose -</option>
                 <option value="cash">Cash</option>
@@ -59,7 +60,7 @@
                 <option value="voucher">Voucher</option>
                 <option value="online">Online Transfer</option>
             </select>
-            
+
         </div>
         <span class="div_span" id="paymentMethodSpan"></span>
         <div class="div_button">
@@ -70,7 +71,6 @@
         </div>
 
     </div>
-
 </body>
 
 </html>

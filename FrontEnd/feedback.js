@@ -1,4 +1,3 @@
-
 //importing classes
 
 import { FormValidation } from "./FormValidation.js";
@@ -38,17 +37,17 @@ const fv_q3 = new FormValidation(feedbackRegEx);
 // DataAccessObject
 
 const feedbackObject = {
-    memberId: "",
-    q1: "",
-    q2: "",
-    q3: ""
+	memberId: "",
+	q1: "",
+	q2: "",
+	q3: "",
 };
 
-const setFeedbackData = () =>{
-    feedbackObject.memberId = MemberIdInput.value;
-    feedbackObject.q1 = question_1_textArea.value;
-    feedbackObject.q2 = question_2_textArea.value;
-    feedbackObject.q3 = question_3_textArea.value;
+const setFeedbackData = () => {
+	feedbackObject.memberId = MemberIdInput.value;
+	feedbackObject.q1 = question_1_textArea.value;
+	feedbackObject.q2 = question_2_textArea.value;
+	feedbackObject.q3 = question_3_textArea.value;
 };
 
 let AreInputsAllValid = true;
@@ -73,7 +72,7 @@ const formValidationFunc = () => {
 		q2_span.innerHTML = "";
 	}
 
-    fv_q3.setInput(feedbackObject.q3);
+	fv_q3.setInput(feedbackObject.q3);
 	if (!fv_q3.isInputValid()) {
 		q3_span.innerHTML = "Feedback must be between 5 and 66 characters";
 		areInputsAllValid = false;
@@ -87,27 +86,25 @@ const formValidationFunc = () => {
 const onSubmitButtonClickHandler = () => {
 	console.log("Submit Button Clicked");
 
-	setFeedbackData()
+	setFeedbackData();
 	console.log("Feedback data: ", feedbackObject);
 	AreInputsAllValid = formValidationFunc();
 
 	console.log("Are All Inputs Valid?: ", AreInputsAllValid);
 
 	if (AreInputsAllValid) {
+		const accessToken = localStorage.getItem("accessToken");
+		const sendFeedbackObject = {
+			MemberId: feedbackObject.memberId,
+			Comment: `Q1: ${feedbackObject.q1} Q2: ${feedbackObject.q2} Q3: ${feedbackObject.q3}`,
+		};
+		console.log("sendFeedbackObject", sendFeedbackObject);
 
-        const sendFeedbackObject = {
-            MemberId: feedbackObject.memberId,
-            Comment: `Q1: ${feedbackObject.q1} Q2: ${feedbackObject.q2} Q3: ${feedbackObject.q3}`
-        }
-		// const sendFeedbackObject = feedbackObject;
-        console.log("sendFeedbackObject", sendFeedbackObject);
-
-
-		//BackEnd - fetch from API
 		fetch("http://localhost:5732/api/feedback", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${accessToken}`,
 			},
 			body: JSON.stringify(sendFeedbackObject),
 		})
@@ -120,9 +117,7 @@ const onSubmitButtonClickHandler = () => {
 				alert("Error");
 				console.error("Error:", error);
 			});
-
 	}
-
 };
 
 submitButton.onclick = onSubmitButtonClickHandler;
@@ -130,7 +125,7 @@ submitButton.onclick = onSubmitButtonClickHandler;
 const onResetButtonClickHandler = () => {
 	console.log("reset button clicked");
 	window.location.reload();
-}
+};
 resetButton.onclick = onResetButtonClickHandler;
 
 //display members while typing
@@ -168,13 +163,13 @@ const debouncedSearchMembers = debounce(async function () {
 			// dropdown.innerHTML = "<div>No results found</div>";
 		} else {
 			searchMemberSpan.innerHTML = "";
-			
+
 			members.slice(0, 5).forEach((member) => {
 				const div = document.createElement("div");
 				div.innerHTML = `${member.MemberId}-${member.FirstName} ${member.LastName}`;
 				div.onclick = function () {
 					// document.getElementById("MemberId").value = member.MemberId; // Fill the MemberId input
-                    MemberIdInput.value = member.MemberId;
+					MemberIdInput.value = member.MemberId;
 					input.value = `${member.FirstName} ${member.LastName}`;
 					dropdown.style.display = "none"; // Hide dropdown after selection
 				};
