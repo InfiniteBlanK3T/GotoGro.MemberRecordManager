@@ -34,15 +34,15 @@ The GotoGro-MRM project aims to transition Goto Grocery Inc. from its traditiona
 
 # Key Objectives  
 
-1. Member Management: The system will provide functionalities to add, edit, search for, and delete member records.  
+- [x] 1. Member Management: The system will provide functionalities to add, edit, search for, and delete member records.  
 
-2. Sales Record Management: Staff will be able to add, edit, and delete sales records associated with members.  
+- [x] 2. Sales Record Management: Staff will be able to add, edit, and delete sales records associated with members.  
 
-3. Reporting: The software will generate individual member reports and an overall sales report, both of which can be exported in CSV format.  
+- [x] 3. Reporting: The software will generate individual member reports and an overall sales report, both of which can be exported in CSV format.  
 
-4. User Interface: A graphical user interface will be developed to ensure ease of use for staff.  
+- [x] 4. User Interface: A graphical user interface will be developed to ensure ease of use for staff.  
 
-5. Feedback Mechanism: Members can provide feedback, further enhancing the store's understanding of their needs.  
+- [x] 5. Feedback Mechanism: Members can provide feedback, further enhancing the store's understanding of their needs.  
 
  
 
