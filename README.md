@@ -2,7 +2,7 @@
 
 # GotoGro-MRM
 
-> [!ALERT]
+> [!IMPORTANT]
 > Please follow the instructions below
 > Hit me up! [@Thomas](https://github.com/InfiniteBlanK3T) if you have installation issue.
 
