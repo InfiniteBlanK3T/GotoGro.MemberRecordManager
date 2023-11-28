@@ -32,15 +32,7 @@ Goto Grocery would like an efficient application that records their members’ d
 
 The GotoGro-MRM project aims to transition Goto Grocery Inc. from its traditional paper-based system to a digital Members Record Management System. This system will streamline the management of member details and their grocery preferences, allowing for more informed inventory decisions. The program will have a graphical user interface for the client to add, remove or edit member records and sales records. The interface will be a web application that allows for the input of data which is then sent to a database to be stored. It must also have the ability to export information from the database to a file in a CSV format to allow for further analysis by Goto Grocery. 
 
- 
-
-  
-
-   
-
 # Key Objectives  
-
- 
 
 1. Member Management: The system will provide functionalities to add, edit, search for, and delete member records.  
 
