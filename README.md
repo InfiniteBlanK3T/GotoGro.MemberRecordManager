@@ -7,10 +7,10 @@
 > Hit me up! [@Thomas](https://github.com/InfiniteBlanK3T) if you have installation issue.
 
 # Contributors:
- - [@Oliver](https://github.com/OliverH1337) ID: 101626533 | Scrum Master / Boss
- - [@Kyle](https://github.com/kylerobertson84) ID: 103352089 | FrontEnd Developer - Designer
- - [@Stefan](https://github.com/623190x) ID: 623190x | FrontEnd Developer/ Agressive Tester
- - [@Thomas](https://github.com/InfiniteBlanK3T) ID: 103488272 | BackEnd Developer / Code Reader 
+ - [@Oliver](https://github.com/OliverH1337) | Scrum Master / Boss
+ - [@Kyle](https://github.com/kylerobertson84) | FrontEnd Developer - Designer
+ - [@Stefan](https://github.com/623190x) | FrontEnd Developer/ Agressive Tester
+ - [@Thomas](https://github.com/InfiniteBlanK3T) | BackEnd Developer / Code Reader 
 
 
 
@@ -19,51 +19,39 @@
 - [Node JS 18.17.1](https://nodejs.org/en)
 
 
-# 1. Front End
-> [!Important]
-> Remember it has to be in /root/ to run ```http-server``` . [NodeJS 18.17 is required!](https://nodejs.org/en)
- 1. Once Node.js is installed, you can install http-server globally on Powershell or CMD: ```npm install -g http-server```
- 2. After installation, run in the directory that you want to host ```http-server```.
- 3. Since there isn't any configuration for Home Page once connected navigate to the FrontEnd folder and choose which HTML you want to test.
+# Background  
 
-# 2. Running localhost database
+ 
+Goto Grocery (GotoGro) Inc have requested a proposal to develop a software application for them. Goto Grocery is based in Hawthorn that provides quality grocery items for their members.   
 
-1. Install this to run local Database server -> [XAMP](https://www.apachefriends.org/download.html)
-  > Just need to enable only MySQL
-2. Database GUI - [MySQLWorkBench](https://www.mysql.com/products/workbench/)
-  -  Create a new connection, leave everything at default
-  -  Once you get in run this SQL code ```CREATE NEW SCHEMA swe200001```
-3. Run command this inside ```/BackEnd/``` folder-> `npx sequelize-cli db:migrate` to build database schema automatically
-  > Once this command runs, check for newly created tables inside your schema. ```swe200001```
+Goto Grocery uses a paper-based system to record their member details and their member sales records. The current system has proven to be difficult to keep track of their members grocery needs. As a result, unnecessary items are being purchased that the members do not need.   
 
+Goto Grocery would like an efficient application that records their members’ details their members' sales and able to see an insight into each of their members grocery needs.  
+  
+# Scope  
 
-# 3. Back End
-## Dependencies Installation guide
-> [!Important]
-> Remember to install dependencies (node_modules) INSIDE ```/BackEnd/.. ```
+The GotoGro-MRM project aims to transition Goto Grocery Inc. from its traditional paper-based system to a digital Members Record Management System. This system will streamline the management of member details and their grocery preferences, allowing for more informed inventory decisions. The program will have a graphical user interface for the client to add, remove or edit member records and sales records. The interface will be a web application that allows for the input of data which is then sent to a database to be stored. It must also have the ability to export information from the database to a file in a CSV format to allow for further analysis by Goto Grocery. 
 
-> [!Warning]
-> Make sure to have your database server ready before running backend server (3.) ```swe200001```
+ 
 
+  
 
-1. Moving into /BackEnd/ OR subfolder -> `cd BackEnd/`
-2. Run this `npm i` for installing dependencies
+   
 
-3. Then you could run our BackEnd locally with -> `npm run dev`
+# Key Objectives  
 
-# 4. CSV dependency 
-> [!Important]
-> Remember to install dependencies (node_modules) INSIDE ```/BackEnd/.. ```
+ 
 
-1. `MUST` be in the `/BackEnd`
-2. Run `npm install json2csv`
+1. Member Management: The system will provide functionalities to add, edit, search for, and delete member records.  
 
+2. Sales Record Management: Staff will be able to add, edit, and delete sales records associated with members.  
 
-## Misc
+3. Reporting: The software will generate individual member reports and an overall sales report, both of which can be exported in CSV format.  
 
-- APIs Testing - [PostMan](https://www.postman.com)
-  > [How to test API using PostMan?](https://youtu.be/CLG0ha_a0q8?si=X-ED1t5GpPRQ-qct)
+4. User Interface: A graphical user interface will be developed to ensure ease of use for staff.  
 
+5. Feedback Mechanism: Members can provide feedback, further enhancing the store's understanding of their needs.  
 
+ 
 
 
